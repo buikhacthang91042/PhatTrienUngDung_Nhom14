@@ -1,0 +1,160 @@
+package GUI;
+
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.JComboBox;
+import java.awt.Cursor;
+
+public class GUI_DatHang extends JPanel {
+	private JTextField txtMaNhanVien;
+	private JTextField txtMaQuanAo;
+	private DefaultTableModel modelThongTinPhieuDat, modelDsQuanAo;
+	private JTable tblThongTinPhieuDat;
+	private JTable tblDsQuanAo;
+	private JTextField txtSoLuong;
+
+	 public GUI_DatHang() {
+			  
+		    	setBackground(new Color(255, 255, 255));
+		    	setLayout(null);
+		    	
+		    	JPanel pnlTimKiemQuanAo = new JPanel();
+		    	pnlTimKiemQuanAo.setBounds(10, 72, 700, 154);
+		    	add(pnlTimKiemQuanAo);
+		    	pnlTimKiemQuanAo.setLayout(null);
+		    	
+		    	JLabel lblKichThuoc = new JLabel("Kích thước");
+		    	lblKichThuoc.setFont(new Font("Arial", Font.BOLD, 20));
+		    	lblKichThuoc.setBounds(10, 108, 144, 24);
+		    	pnlTimKiemQuanAo.add(lblKichThuoc);
+		    	
+		    	JLabel lblMaQuanAo = new JLabel("Mã quần áo");
+		    	lblMaQuanAo.setCursor(Cursor.getPredefinedCursor(Cursor.CROSSHAIR_CURSOR));
+		    	lblMaQuanAo.setFont(new Font("Arial", Font.BOLD, 20));
+		    	lblMaQuanAo.setBounds(10, 55, 136, 38);
+		    	pnlTimKiemQuanAo.add(lblMaQuanAo);
+		    	
+		    	txtMaNhanVien = new JTextField();
+		    	txtMaNhanVien.setBounds(161, 12, 124, 24);
+		    	pnlTimKiemQuanAo.add(txtMaNhanVien);
+		    	txtMaNhanVien.setColumns(10);
+		    	
+		    	txtMaQuanAo = new JTextField();
+		    	txtMaQuanAo.setColumns(10);
+		    	txtMaQuanAo.setBounds(161, 62, 124, 24);
+		    	pnlTimKiemQuanAo.add(txtMaQuanAo);
+		    	
+		    	JLabel lblLoaiQuanAo = new JLabel("Loại quần áo");
+		    	lblLoaiQuanAo.setFont(new Font("Arial", Font.BOLD, 20));
+		    	lblLoaiQuanAo.setBounds(400, 62, 145, 24);
+		    	pnlTimKiemQuanAo.add(lblLoaiQuanAo);
+		    	
+		    	JLabel lblNhaCungCap = new JLabel("Nhà cung cấp");
+		    	lblNhaCungCap.setFont(new Font("Arial", Font.BOLD, 20));
+		    	lblNhaCungCap.setBounds(400, 8, 136, 24);
+		    	pnlTimKiemQuanAo.add(lblNhaCungCap);
+		    	
+		    	JLabel lblTenQuanAo = new JLabel("Tên quần áo");
+		    	lblTenQuanAo.setFont(new Font("Arial", Font.BOLD, 20));
+		    	lblTenQuanAo.setBounds(10, 12, 136, 24);
+		    	pnlTimKiemQuanAo.add(lblTenQuanAo);
+		    	
+		    	JComboBox cboNhaCungCap = new JComboBox();
+		    	cboNhaCungCap.setBounds(555, 13, 124, 21);
+		    	pnlTimKiemQuanAo.add(cboNhaCungCap);
+		    	
+		    	JComboBox cboKichThuoc = new JComboBox();
+		    	cboKichThuoc.setBounds(164, 108, 121, 21);
+		    	pnlTimKiemQuanAo.add(cboKichThuoc);
+		    	
+		    	JComboBox cboLoaiQuanAo = new JComboBox();
+		    	cboLoaiQuanAo.setBounds(555, 65, 124, 21);
+		    	pnlTimKiemQuanAo.add(cboLoaiQuanAo);
+		    	
+		    	JButton btnTimQuanAo = new JButton("TÌM");
+		    	btnTimQuanAo.setBounds(395, 104, 92, 33);
+		    	pnlTimKiemQuanAo.add(btnTimQuanAo);
+		    	btnTimQuanAo.setFont(new Font("Arial", Font.BOLD, 20));
+		    	
+				
+				
+				
+				String [] tieude={"STT","Mã phiếu đặt","Mã khách hàng","Mã nhân viên"
+						 ,"Ngày đặt","Tên quần áo ","Loại quần áo","Giá"};
+				modelThongTinPhieuDat = new DefaultTableModel(tieude,0);
+				
+				JScrollPane scrThongTinDonHang = new JScrollPane();
+				scrThongTinDonHang.setBounds(803, 93, 390, 206);
+				add(scrThongTinDonHang);
+				scrThongTinDonHang.setViewportView(tblThongTinPhieuDat = new  JTable(modelThongTinPhieuDat));
+				scrThongTinDonHang.setViewportView(tblThongTinPhieuDat);
+				
+				JButton btnThem = new JButton("THÊM");
+				btnThem.setFont(new Font("Arial", Font.BOLD, 20));
+				btnThem.setBounds(204, 574, 108, 33);
+				add(btnThem);
+				
+				JButton btnXoa = new JButton("XÓA");
+				btnXoa.setFont(new Font("Arial", Font.BOLD, 20));
+				btnXoa.setBounds(341, 574, 108, 33);
+				add(btnXoa);
+				
+				JButton btnXoaTrang = new JButton("XÓA TRẮNG");
+				btnXoaTrang.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+					}
+				});
+				btnXoaTrang.setFont(new Font("Arial", Font.BOLD, 20));
+				btnXoaTrang.setBounds(477, 574, 157, 33);
+				add(btnXoaTrang);
+				
+				JScrollPane scrDsQuanAo = new JScrollPane();
+				scrDsQuanAo.setBounds(10, 288, 700, 224);
+				add(scrDsQuanAo);
+				
+				String [] tieuDeDsQuanAo={"Mã quần áo","Tên quần áo","Số lượng tồn"
+						 ,"Tên nhà cung cấp","Loại quần áo","Kích thước","Giá"};
+				modelDsQuanAo = new DefaultTableModel(tieuDeDsQuanAo,0);
+				scrDsQuanAo.setViewportView(tblDsQuanAo = new  JTable(modelDsQuanAo));
+				scrDsQuanAo.setViewportView(tblDsQuanAo);
+				
+				JLabel lblSoLuong = new JLabel("Số lượng");
+				lblSoLuong.setFont(new Font("Arial", Font.BOLD, 16));
+				lblSoLuong.setBounds(10, 568, 83, 27);
+				add(lblSoLuong);
+				
+				txtSoLuong = new JTextField();
+				txtSoLuong.setBounds(90, 574, 63, 19);
+				add(txtSoLuong);
+				txtSoLuong.setColumns(10);
+				
+				JLabel lblTimKiemQuanAo = new JLabel("Tìm kiếm quần áo");
+				lblTimKiemQuanAo.setForeground(new Color(255, 0, 0));
+				lblTimKiemQuanAo.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 16));
+				lblTimKiemQuanAo.setBounds(10, 39, 139, 33);
+				add(lblTimKiemQuanAo);
+				
+				JLabel lblDanhSachQuanAo = new JLabel("Danh sách quần áo");
+				lblDanhSachQuanAo.setForeground(Color.RED);
+				lblDanhSachQuanAo.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 16));
+				lblDanhSachQuanAo.setBounds(10, 257, 173, 33);
+				add(lblDanhSachQuanAo);
+				
+				
+		    	
+		    	setVisible(true);
+		    	
+}
+}

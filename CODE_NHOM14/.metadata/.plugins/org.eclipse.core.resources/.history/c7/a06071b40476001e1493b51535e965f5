@@ -1,0 +1,132 @@
+package GUI;
+
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import java.awt.Font;
+import javax.swing.JButton;
+import java.awt.Color;
+import java.awt.SystemColor;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JTable;
+import javax.swing.JScrollBar;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JScrollPane;
+
+public class GUI_NhaCungCap extends JPanel {
+
+	private static final long serialVersionUID = 1L;
+	private JTextField txtMaNCC;
+	private JTextField txtTenNCC;
+	private JTextField txtDiachi;
+	private JTextField txtSdt;
+	private JTable tblThongTinNhaCC;
+
+	/**
+	 * Create the panel.
+	 */
+	public GUI_NhaCungCap() {
+		setBackground(new Color(0, 64, 64));
+		setLayout(null);
+		
+		JLabel lblNhacungcap = new JLabel("Nhà Cung Cấp");
+		lblNhacungcap.setFont(new Font("Tahoma", Font.BOLD, 35));
+		lblNhacungcap.setBounds(462, 10, 256, 69);
+		add(lblNhacungcap);
+		
+		JLabel lblMaNCC = new JLabel("Mã nhà cung cấp");
+		lblMaNCC.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblMaNCC.setBounds(83, 103, 145, 51);
+		add(lblMaNCC);
+		
+		txtMaNCC = new JTextField();
+		txtMaNCC.setBounds(238, 103, 240, 51);
+		add(txtMaNCC);
+		txtMaNCC.setColumns(10);
+		
+		JLabel lblTenNCC = new JLabel("Tên nhà cung cấp");
+		lblTenNCC.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblTenNCC.setBounds(77, 188, 151, 51);
+		add(lblTenNCC);
+		
+		txtTenNCC = new JTextField();
+		txtTenNCC.setColumns(10);
+		txtTenNCC.setBounds(238, 191, 240, 51);
+		add(txtTenNCC);
+		
+		JLabel lblDiachi = new JLabel("Địa chỉ");
+		lblDiachi.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblDiachi.setBounds(547, 103, 145, 51);
+		add(lblDiachi);
+		
+		txtDiachi = new JTextField();
+		txtDiachi.setColumns(10);
+		txtDiachi.setBounds(702, 103, 240, 51);
+		add(txtDiachi);
+		
+		JLabel lblSdt = new JLabel("Số điện thoại");
+		lblSdt.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblSdt.setBounds(547, 191, 145, 51);
+		add(lblSdt);
+		
+		txtSdt = new JTextField();
+		txtSdt.setColumns(10);
+		txtSdt.setBounds(702, 191, 240, 51);
+		add(txtSdt);
+		
+		JButton btnthem = new JButton("THÊM");
+		btnthem.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnthem.setForeground(new Color(50, 205, 50));
+		btnthem.setBackground(new Color(0, 250, 154));
+		btnthem.setBounds(115, 279, 101, 42);
+		add(btnthem);
+		
+		JButton btnxoa = new JButton("XÓA");
+		btnxoa.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnxoa.setForeground(new Color(50, 205, 50));
+		btnxoa.setBackground(new Color(0, 250, 154));
+		btnxoa.setBounds(350, 279, 101, 42);
+		add(btnxoa);
+		
+		JButton btnsua = new JButton("SỬA");
+		btnsua.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnsua.setForeground(new Color(50, 205, 50));
+		btnsua.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnsua.setBackground(new Color(0, 250, 154));
+		btnsua.setBounds(599, 279, 101, 42);
+		add(btnsua);
+		
+		JButton btnxoatrang = new JButton("XÓA TRẮNG");
+		btnxoatrang.setForeground(new Color(50, 205, 50));
+		btnxoatrang.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnxoatrang.setBackground(new Color(0, 250, 154));
+		btnxoatrang.setBounds(800, 279, 123, 42);
+		add(btnxoatrang);
+		
+		JScrollPane scrThongTinNhaCungCap = new JScrollPane();
+		scrThongTinNhaCungCap.setBounds(77, 367, 1126, 177);
+		add(scrThongTinNhaCungCap);
+		
+		tblThongTinNhaCC = new JTable();
+		scrThongTinNhaCungCap.setViewportView(tblThongTinNhaCC);
+		tblThongTinNhaCC.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+			},
+			new String[] {
+				"Mã nhà cung cấp", "Tên nhà cung cấp", "Số điện thoại", "Địa chỉ"
+			}
+		));
+		tblThongTinNhaCC.setFont(new Font("Arial", Font.PLAIN, 14));
+
+	}
+}
+

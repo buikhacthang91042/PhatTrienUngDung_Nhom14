@@ -1,0 +1,67 @@
+package entity;
+
+import java.util.Objects;
+
+public class Chitietphieudathang {
+	private String maPhieudat;
+	private Sanpham maSP;
+	private Float giaGoc;
+	private int soLuongDat;
+	public Chitietphieudathang(String maPhieudat, Sanpham mSP, Float giaGoc, int soLuongDat) {
+		super();
+		this.maPhieudat = maPhieudat;
+		this.maSP = mSP;
+		this.giaGoc = giaGoc;
+		this.soLuongDat = soLuongDat;
+	}
+	public String getMaPhieudat() {
+		return maPhieudat;
+	}
+	public void setMaPhieudat(String maPhieudat) {
+		this.maPhieudat = maPhieudat;
+	}
+	public Sanpham getmSP() {
+		return maSP;
+	}
+	public void setmSP(Sanpham mSP) {
+		this.maSP = mSP;
+	}
+	public Float getGiaGoc() {
+		return giaGoc;
+	}
+	public void setGiaGoc(Float giaGoc) {
+		this.giaGoc = giaGoc;
+	}
+	public int getSoLuongDat() {
+		return soLuongDat;
+	}
+	public void setSoLuongDat(int soLuongDat) {
+		this.soLuongDat = soLuongDat;
+	}
+	@Override
+	public int hashCode() {
+		return Objects.hash(giaGoc, maSP, maPhieudat, soLuongDat);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Chitietphieudathang other = (Chitietphieudathang) obj;
+		return Objects.equals(giaGoc, other.giaGoc) && Objects.equals(maSP, other.maSP)
+				&& Objects.equals(maPhieudat, other.maPhieudat) && soLuongDat == other.soLuongDat;
+	}
+	@Override
+	public String toString() {
+		return "Chitietphieudathang [maPhieudat=" + maPhieudat + ", mSP=" + maSP + ", giaGoc=" + giaGoc + ", soLuongDat="
+				+ soLuongDat + "]";
+	}
+	public Chitietphieudathang() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+}

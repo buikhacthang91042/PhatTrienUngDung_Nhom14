@@ -1,0 +1,59 @@
+ackage entity;
+
+import java.util.Objects;
+
+public class Chuongtrinhkhuyenmai {
+	private String maKM;
+	private String maLoaiSP;
+	private Float heSoKhuyenMai;
+	public Chuongtrinhkhuyenmai(String maKM, String maLoaiSP, Float heSoKhuyenMai) {
+		super();
+		this.maKM = maKM;
+		this.maLoaiSP = maLoaiSP;
+		this.heSoKhuyenMai = heSoKhuyenMai;
+	}
+	public String getMaKM() {
+		return maKM;
+	}
+	public void setMaKM(String maKM) {
+		this.maKM = maKM;
+	}
+	public String getMaLoaiSP() {
+		return maLoaiSP;
+	}
+	public void setMaLoaiSP(String maLoaiSP) {
+		this.maLoaiSP = maLoaiSP;
+	}
+	public Float getHeSoKhuyenMai() {
+		return heSoKhuyenMai;
+	}
+	public void setHeSoKhuyenMai(Float heSoKhuyenMai) {
+		this.heSoKhuyenMai = heSoKhuyenMai;
+	}
+	@Override
+	public int hashCode() {
+		return Objects.hash(heSoKhuyenMai, maKM, maLoaiSP);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Chuongtrinhkhuyenmai other = (Chuongtrinhkhuyenmai) obj;
+		return Objects.equals(heSoKhuyenMai, other.heSoKhuyenMai) && Objects.equals(maKM, other.maKM)
+				&& Objects.equals(maLoaiSP, other.maLoaiSP);
+	}
+	@Override
+	public String toString() {
+		return "Chuongtrinhkhuyenmai [maKM=" + maKM + ", maLoaiSP=" + maLoaiSP + ", heSoKhuyenMai=" + heSoKhuyenMai
+				+ "]";
+	}
+	public Chuongtrinhkhuyenmai() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+}

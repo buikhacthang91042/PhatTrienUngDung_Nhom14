@@ -1,0 +1,19 @@
+package GUI;
+
+import java.awt.Color;
+import java.awt.Font;
+
+import javax.swing.JLabel;
+
+public class GUI_TimKiemSanPham {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+    	
+    	JLabel lblNewLabel = new JLabel("Quản lí nhân viên");
+    	lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 58));
+    	add(lblNewLabel);
+	}
+
+}

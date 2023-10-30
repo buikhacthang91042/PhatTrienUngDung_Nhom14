@@ -1,0 +1,72 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package GUI;
+
+import java.awt.Color;
+import java.awt.Font;
+
+import javax.swing.GroupLayout;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+/**
+ *
+ * @author RavenPC
+ */
+public class GUI_QuanLyNhanVien extends JPanel {
+	private JTextField textMaNhanVien;
+	private JTextField textField;
+	private JTextField textField_1;
+
+    public GUI_QuanLyNhanVien() {
+    	setBackground(new Color(255, 255, 255));
+    	setLayout(null);
+    	
+    	JLabel lblNewLabel = new JLabel("Quản lí nhân viên");
+    	lblNewLabel.setBounds(248, 10, 454, 70);
+    	lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 58));
+    	
+    	add(lblNewLabel);
+    	
+    	JPanel pnlNhapThongTin = new JPanel();
+    	pnlNhapThongTin.setBounds(156, 100, 753, 150);
+    	add(pnlNhapThongTin);
+    	pnlNhapThongTin.setLayout(null);
+    	
+    	JLabel lblMaNhanVien = new JLabel("Mã nhân viên");
+    	lblMaNhanVien.setFont(new Font("Arial", Font.BOLD, 20));
+    	lblMaNhanVien.setBounds(10, 17, 136, 24);
+    	pnlNhapThongTin.add(lblMaNhanVien);
+    	
+    	JLabel lblHoTen = new JLabel("Họ tên");
+    	lblHoTen.setFont(new Font("Arial", Font.BOLD, 20));
+    	lblHoTen.setBounds(10, 68, 136, 24);
+    	pnlNhapThongTin.add(lblHoTen);
+    	
+    	JLabel lblSoDienThoai = new JLabel("Số điện thoại");
+    	lblSoDienThoai.setFont(new Font("Arial", Font.BOLD, 20));
+    	lblSoDienThoai.setBounds(10, 108, 136, 38);
+    	pnlNhapThongTin.add(lblSoDienThoai);
+    	
+    	textMaNhanVien = new JTextField();
+    	textMaNhanVien.setBounds(161, 16, 124, 24);
+    	pnlNhapThongTin.add(textMaNhanVien);
+    	textMaNhanVien.setColumns(10);
+    	
+    	textField = new JTextField();
+    	textField.setColumns(10);
+    	textField.setBounds(161, 68, 124, 24);
+    	pnlNhapThongTin.add(textField);
+    	
+    	textField_1 = new JTextField();
+    	textField_1.setColumns(10);
+    	textField_1.setBounds(161, 115, 124, 24);
+    	pnlNhapThongTin.add(textField_1);
+    	setVisible(true);
+}
+}

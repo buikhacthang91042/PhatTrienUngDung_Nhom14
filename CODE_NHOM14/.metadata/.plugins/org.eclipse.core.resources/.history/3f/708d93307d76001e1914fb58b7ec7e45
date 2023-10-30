@@ -1,0 +1,66 @@
+package entity;
+
+import java.util.Objects;
+
+public class Chitiethoadon {
+	private Hoadon maHD;
+	private Sanpham maSP;
+	private int soLuong;
+	private float gia;
+	public Chitiethoadon(Hoadon maHD, Sanpham maSP, int soLuong, float gia) {
+		super();
+		this.maHD = maHD;
+		this.maSP = maSP;
+		this.soLuong = soLuong;
+		this.gia = gia;
+	}
+	public Hoadon getMaHD() {
+		return maHD;
+	}
+	public void setMaHD(Hoadon maHD) {
+		this.maHD = maHD;
+	}
+	public Sanpham getMaSP() {
+		return maSP;
+	}
+	public void setMaSP(Sanpham maSP) {
+		this.maSP = maSP;
+	}
+	public int getSoLuong() {
+		return soLuong;
+	}
+	public void setSoLuong(int soLuong) {
+		this.soLuong = soLuong;
+	}
+	public float getGia() {
+		return gia;
+	}
+	public void setGia(float gia) {
+		this.gia = gia;
+	}
+	@Override
+	public int hashCode() {
+		return Objects.hash(gia, maHD, maSP, soLuong);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Chitiethoadon other = (Chitiethoadon) obj;
+		return Float.floatToIntBits(gia) == Float.floatToIntBits(other.gia) && Objects.equals(maHD, other.maHD)
+				&& Objects.equals(maSP, other.maSP) && soLuong == other.soLuong;
+	}
+	@Override
+	public String toString() {
+		return "Chitiethoadon [maHD=" + maHD + ", maSP=" + maSP + ", soLuong=" + soLuong + ", gia=" + gia + "]";
+	}
+	public Chitiethoadon() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+}

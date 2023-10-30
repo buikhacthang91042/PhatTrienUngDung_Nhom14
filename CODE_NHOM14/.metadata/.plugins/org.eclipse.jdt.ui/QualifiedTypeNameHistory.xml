@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="java.awt.Font"/>
+    <fullyQualifiedTypeName name="GUI.Panel2"/>
+    <fullyQualifiedTypeName name="GUI.GUI_QuanLyNhanVien"/>
+    <fullyQualifiedTypeName name="javax.swing.JTable"/>
+    <fullyQualifiedTypeName name="javax.swing.table.DefaultTableModel"/>
+    <fullyQualifiedTypeName name="javax.swing.JScrollPane"/>
+    <fullyQualifiedTypeName name="GUI.GUI_TimKiemSanPham"/>
+    <fullyQualifiedTypeName name="GUI.GUI_DatHang"/>
+    <fullyQualifiedTypeName name="GUI.GUI_BanHang"/>
+    <fullyQualifiedTypeName name="GUI.GUI_CapNhatQuanAo"/>
+    <fullyQualifiedTypeName name="GUI.GUI_TimKiemQuanAo"/>
+    <fullyQualifiedTypeName name="GUI.GUI_TimKiemKhachHang"/>
+    <fullyQualifiedTypeName name="GUI.GUI_HoaDon"/>
+    <fullyQualifiedTypeName name="GUI.GUI_ThongKeDoanhThu"/>
+    <fullyQualifiedTypeName name="GUI.GUI_TimKiemNhaCungCap"/>
+    <fullyQualifiedTypeName name="javax.swing.JPanel"/>
+    <fullyQualifiedTypeName name="entity.Nhacungcap"/>
+</qualifiedTypeNameHistroy>

@@ -1,0 +1,131 @@
+package GUI;
+
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import java.awt.Font;
+import java.awt.Color;
+import javax.swing.JTextField;
+import javax.swing.JComboBox;
+import javax.swing.JTable;
+import javax.swing.JButton;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JScrollPane;
+
+public class Quanlykhachhang extends JPanel {
+
+	private static final long serialVersionUID = 1L;
+	private JTextField txtMakhachhang;
+	private JTextField txtHoten;
+	private JTextField txtStd;
+	private JTextField txtNamsinh;
+	private JTable tblQuanlykhachhang;
+
+	/**
+	 * Create the panel.
+	 */
+	public Quanlykhachhang() {
+		setLayout(null);
+		
+		JLabel lblTieuDe = new JLabel("Quáº£n lÃ­ khÃ¡ch hÃ ng");
+		lblTieuDe.setFont(new Font("Arial", Font.BOLD, 35));
+		lblTieuDe.setForeground(new Color(135, 206, 235));
+		lblTieuDe.setBounds(472, 11, 318, 80);
+		add(lblTieuDe);
+		
+		JLabel lblMakhachhang = new JLabel("MÃ£ khÃ¡ch hÃ ng");
+		lblMakhachhang.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblMakhachhang.setBounds(246, 116, 144, 41);
+		add(lblMakhachhang);
+		
+		txtMakhachhang = new JTextField();
+		txtMakhachhang.setBounds(437, 121, 245, 37);
+		add(txtMakhachhang);
+		txtMakhachhang.setColumns(10);
+		
+		txtHoten = new JTextField();
+		txtHoten.setColumns(10);
+		txtHoten.setBounds(437, 177, 245, 41);
+		add(txtHoten);
+		
+		JLabel lblHoten = new JLabel("Há» vÃ  tÃªn");
+		lblHoten.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblHoten.setBounds(271, 176, 108, 37);
+		add(lblHoten);
+		
+		txtStd = new JTextField();
+		txtStd.setColumns(10);
+		txtStd.setBounds(437, 244, 245, 41);
+		add(txtStd);
+		
+		JLabel lblSodienthoai = new JLabel("Sá»‘ Ä‘iá»‡n thoáº¡i");
+		lblSodienthoai.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblSodienthoai.setBounds(246, 245, 144, 32);
+		add(lblSodienthoai);
+		
+		txtNamsinh = new JTextField();
+		txtNamsinh.setColumns(10);
+		txtNamsinh.setBounds(900, 141, 245, 41);
+		add(txtNamsinh);
+		
+		JLabel lblNamsinh = new JLabel("NÄƒm sinh");
+		lblNamsinh.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblNamsinh.setBounds(736, 138, 98, 41);
+		add(lblNamsinh);
+		
+		JLabel lblGioitinh = new JLabel("Giá»›i tÃ­nh");
+		lblGioitinh.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblGioitinh.setBounds(736, 210, 98, 41);
+		add(lblGioitinh);
+		
+		String gioiTinh[]= {"Nam","Ná»¯"};
+		JComboBox cmbGioitinh = new JComboBox(gioiTinh);
+		cmbGioitinh.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		cmbGioitinh.setToolTipText("");
+		cmbGioitinh.setBounds(975, 209, 98, 41);
+		add(cmbGioitinh);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(91, 436, 1116, 202);
+		add(scrollPane);
+		
+		tblQuanlykhachhang = new JTable();
+		scrollPane.setViewportView(tblQuanlykhachhang);
+		tblQuanlykhachhang.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+			},
+			new String[] {
+				"M\u00E3 kh\u00E1ch h\u00E0ng", "H\u1ECD v\u00E0 t\u00EAn", "S\u1ED1 \u0111i\u1EC7n tho\u1EA1i", "N\u0103m sinh", "Gi\u1EDBi t\u00EDnh"
+			}
+		));
+		
+		JButton btnThem = new JButton("ThÃªm");
+		btnThem.setForeground(new Color(0, 255, 0));
+		btnThem.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		btnThem.setBounds(172, 339, 171, 49);
+		add(btnThem);
+		
+		JButton btnXoa = new JButton("XÃ³a");
+		btnXoa.setForeground(Color.GREEN);
+		btnXoa.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		btnXoa.setBounds(437, 339, 171, 49);
+		add(btnXoa);
+		
+		JButton btnSua = new JButton("Sá»­a");
+		btnSua.setForeground(Color.GREEN);
+		btnSua.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		btnSua.setBounds(700, 339, 171, 49);
+		add(btnSua);
+		
+		JButton btnXoatrang = new JButton("XÃ³a tráº¯ng");
+		btnXoatrang.setForeground(Color.GREEN);
+		btnXoatrang.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		btnXoatrang.setBounds(963, 339, 171, 49);
+		add(btnXoatrang);
+		
+		
+	}
+}
+

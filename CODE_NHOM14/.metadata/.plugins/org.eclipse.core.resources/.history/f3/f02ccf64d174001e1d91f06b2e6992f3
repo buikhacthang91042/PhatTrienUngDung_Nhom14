@@ -1,0 +1,127 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package GUI;
+
+import java.awt.Color;
+import java.awt.Font;
+
+import javax.swing.GroupLayout;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+
+/**
+ *
+ * @author RavenPC
+ */
+public class GUI_QuanLyNhanVien extends JPanel {
+	private JTextField txtMaNhanVien;
+	private JTextField txtHoTen;
+	private JTextField txtSoDienThoai;
+	private JTextField txtNamSinh;
+	private JTextField txtGioiTinh;
+	private JTextField txtNgayVaoLam;
+	private DefaultTableModel model;
+	private JTable tblThongTinNhanVien;
+    public GUI_QuanLyNhanVien() {
+    	setBackground(new Color(255, 255, 255));
+    	setLayout(null);
+    	
+    	JLabel lblTieuDe = new JLabel("Quản lí nhân viên");
+    	lblTieuDe.setBounds(450, 10, 454, 70);
+    	lblTieuDe.setFont(new Font("Tahoma", Font.PLAIN, 50));
+    	
+    	add(lblTieuDe);
+    	
+    	JPanel pnlNhapThongTin = new JPanel();
+    	pnlNhapThongTin.setBounds(300, 100, 753, 150);
+    	add(pnlNhapThongTin);
+    	pnlNhapThongTin.setLayout(null);
+    	
+    	JLabel lblMaNhanVien = new JLabel("Mã nhân viên");
+    	lblMaNhanVien.setFont(new Font("Arial", Font.BOLD, 20));
+    	lblMaNhanVien.setBounds(10, 17, 136, 24);
+    	pnlNhapThongTin.add(lblMaNhanVien);
+    	
+    	JLabel lblHoTen = new JLabel("Họ tên");
+    	lblHoTen.setFont(new Font("Arial", Font.BOLD, 20));
+    	lblHoTen.setBounds(10, 68, 136, 24);
+    	pnlNhapThongTin.add(lblHoTen);
+    	
+    	JLabel lblSoDienThoai = new JLabel("Số điện thoại");
+    	lblSoDienThoai.setFont(new Font("Arial", Font.BOLD, 20));
+    	lblSoDienThoai.setBounds(10, 108, 136, 38);
+    	pnlNhapThongTin.add(lblSoDienThoai);
+    	
+    	txtMaNhanVien = new JTextField();
+    	txtMaNhanVien.setBounds(161, 16, 124, 24);
+    	pnlNhapThongTin.add(txtMaNhanVien);
+    	txtMaNhanVien.setColumns(10);
+    	
+    	txtHoTen = new JTextField();
+    	txtHoTen.setColumns(10);
+    	txtHoTen.setBounds(161, 68, 124, 24);
+    	pnlNhapThongTin.add(txtHoTen);
+    	
+    	txtSoDienThoai = new JTextField();
+    	txtSoDienThoai.setColumns(10);
+    	txtSoDienThoai.setBounds(161, 115, 124, 24);
+    	pnlNhapThongTin.add(txtSoDienThoai);
+    	
+    	JLabel lblNamSinh = new JLabel("Năm sinh");
+    	lblNamSinh.setFont(new Font("Arial", Font.BOLD, 20));
+    	lblNamSinh.setBounds(400, 17, 136, 24);
+    	pnlNhapThongTin.add(lblNamSinh);
+    	
+    	JLabel lblGioiTinh = new JLabel("Giới tính");
+    	lblGioiTinh.setFont(new Font("Arial", Font.BOLD, 20));
+    	lblGioiTinh.setBounds(400, 62, 136, 24);
+    	pnlNhapThongTin.add(lblGioiTinh);
+    	
+    	JLabel lblNgayVaoLam = new JLabel("Ngày vào làm");
+    	lblNgayVaoLam.setFont(new Font("Arial", Font.BOLD, 20));
+    	lblNgayVaoLam.setBounds(400, 108, 136, 24);
+    	pnlNhapThongTin.add(lblNgayVaoLam);
+    	
+    	txtNamSinh = new JTextField();
+    	txtNamSinh.setColumns(10);
+    	txtNamSinh.setBounds(555, 17, 124, 24);
+    	pnlNhapThongTin.add(txtNamSinh);
+    	
+    	txtGioiTinh = new JTextField();
+    	txtGioiTinh.setColumns(10);
+    	txtGioiTinh.setBounds(555, 68, 124, 24);
+    	pnlNhapThongTin.add(txtGioiTinh);
+    	
+    	txtNgayVaoLam = new JTextField();
+    	txtNgayVaoLam.setColumns(10);
+    	txtNgayVaoLam.setBounds(555, 108, 124, 24);
+    	pnlNhapThongTin.add(txtNgayVaoLam);
+    	
+		
+		
+		
+		String [] tieude={"STT","Mã nhân viên","Họ tên","Số điện thoại"
+				 ,"Năm sinh","Giới tính","Ngày vào làm"};
+		model = new DefaultTableModel(tieude,0);
+		
+		JScrollPane scrThongTinNhanVien = new JScrollPane();
+		scrThongTinNhanVien.setBounds(184, 288, 987, 182);
+		add(scrThongTinNhanVien);
+		scrThongTinNhanVien.setViewportView(tblThongTinNhanVien = new  JTable(model));
+		scrThongTinNhanVien.setViewportView(tblThongTinNhanVien);
+		
+		
+    	
+    	setVisible(true);
+    	
+    	
+}
+}

@@ -1,0 +1,92 @@
+package entity;
+
+import java.util.Objects;
+
+public class Sanpham {
+	private String maSP;
+	private String tenSP;
+	private String tenNCC;
+	private String moTa;
+	private String kinhThuoc;
+	private int soLuongTon;
+	private float gia;
+	public Sanpham(String maSP, String tenSP, String tenNCC, String moTa, String kinhThuoc, int soLuongTon, float gia) {
+		super();
+		this.maSP = maSP;
+		this.tenSP = tenSP;
+		this.tenNCC = tenNCC;
+		this.moTa = moTa;
+		this.kinhThuoc = kinhThuoc;
+		this.soLuongTon = soLuongTon;
+		this.gia = gia;
+	}
+	public String getMaSP() {
+		return maSP;
+	}
+	public void setMaSP(String maSP) {
+		this.maSP = maSP;
+	}
+	public String getTenSP() {
+		return tenSP;
+	}
+	public void setTenSP(String tenSP) {
+		this.tenSP = tenSP;
+	}
+	public String getTenNCC() {
+		return tenNCC;
+	}
+	public void setTenNCC(String tenNCC) {
+		this.tenNCC = tenNCC;
+	}
+	public String getMoTa() {
+		return moTa;
+	}
+	public void setMoTa(String moTa) {
+		this.moTa = moTa;
+	}
+	public String getKinhThuoc() {
+		return kinhThuoc;
+	}
+	public void setKinhThuoc(String kinhThuoc) {
+		this.kinhThuoc = kinhThuoc;
+	}
+	public int getSoLuongTon() {
+		return soLuongTon;
+	}
+	public void setSoLuongTon(int soLuongTon) {
+		this.soLuongTon = soLuongTon;
+	}
+	public float getGia() {
+		return gia;
+	}
+	public void setGia(float gia) {
+		this.gia = gia;
+	}
+	@Override
+	public int hashCode() {
+		return Objects.hash(gia, kinhThuoc, maSP, moTa, soLuongTon, tenNCC, tenSP);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Sanpham other = (Sanpham) obj;
+		return Float.floatToIntBits(gia) == Float.floatToIntBits(other.gia)
+				&& Objects.equals(kinhThuoc, other.kinhThuoc) && Objects.equals(maSP, other.maSP)
+				&& Objects.equals(moTa, other.moTa) && soLuongTon == other.soLuongTon
+				&& Objects.equals(tenNCC, other.tenNCC) && Objects.equals(tenSP, other.tenSP);
+	}
+	@Override
+	public String toString() {
+		return "Sanpham [maSP=" + maSP + ", tenSP=" + tenSP + ", tenNCC=" + tenNCC + ", moTa=" + moTa + ", kinhThuoc="
+				+ kinhThuoc + ", soLuongTon=" + soLuongTon + ", gia=" + gia + "]";
+	}
+	public Sanpham() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+}

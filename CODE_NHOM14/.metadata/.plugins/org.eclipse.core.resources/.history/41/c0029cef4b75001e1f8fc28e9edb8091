@@ -1,0 +1,28 @@
+package GUI;
+
+import java.awt.Color;
+import java.awt.Font;
+
+import javax.swing.GroupLayout;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+/**
+ *
+ * @author RavenPC
+ */
+public class GUI_TimKiemSanPham extends JPanel {
+
+    public GUI_TimKiemSanPham() {
+    	setBackground(new Color(255, 255, 255));
+    	setLayout(null);
+    	
+    	JLabel lblNewLabel = new JLabel("Tìm kiếm sản phẩm");
+    	lblNewLabel.setBounds(39, 5, 507, 70);
+    	lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 58));
+    		add(lblNewLabel);
+     
+}
+}

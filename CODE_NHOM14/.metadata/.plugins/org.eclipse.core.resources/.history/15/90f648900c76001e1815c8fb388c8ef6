@@ -1,0 +1,296 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package GUI;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import javax.swing.SwingConstants;
+import java.awt.Insets;
+
+
+public class Main extends JFrame {
+    private JPanel pnlThongTin;
+    private JPanel pnlTieuDe;
+    private JPanel pnlMenu;
+    private JLabel lblTieuDe;
+    private JPanel pnlTimKiem;
+    private JMenuBar mnuTimKiem;
+    private JMenu mnTimKiem;
+    private JMenuItem mniTimKiemKhachHang,mniTimKiemQuanAo;
+    private JPanel pnlNhanVien;
+    private JMenuBar mnuNhanVien;
+    private JMenu mnNhanVien;
+    private JMenuItem mniBanHang,mniCapNhatNhanVien,mniTimKiemNhanVien;
+    private JPanel pnlKhachHang;
+    private JMenuBar mnuKhachHang;
+    private JMenu mnKhachHang;
+    
+    public Main() {
+    	setTitle("Cửa hàng quần áo thời trang");
+    	setSize(new Dimension(871, 473));
+        setLocationRelativeTo(null);
+        setExtendedState(MAXIMIZED_BOTH);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        
+        //Import các GUI
+        GUI_CapNhatNhanVien capNhatNhanVien = new GUI_CapNhatNhanVien();
+        capNhatNhanVien.setBounds(0, 0, 1308, 710);
+        GUI_TimKiemSanPham timKiemSanPham = new GUI_TimKiemSanPham();
+        timKiemSanPham.setBounds(0, 0, 1308, 710);
+        GUI_BanHang banHang = new GUI_BanHang();
+        banHang.setBounds(0, 0, 1308, 710);
+        GUI_NhaCungCap nhaCungCap= new GUI_NhaCungCap();
+        nhaCungCap.setBounds(0, 0, 1308, 710);
+        GUI_QuanLiKhachHang capNhatKhachHang = new GUI_QuanLiKhachHang();
+        capNhatKhachHang.setBounds(0, 0, 1308, 710);
+        
+        capNhatNhanVien.setVisible(false);
+        timKiemSanPham.setVisible(false);
+        banHang.setVisible(false);
+        nhaCungCap.setVisible(false);
+        capNhatKhachHang.setVisible(false);
+        //Tạo panel chứa các thông tin
+        
+        pnlThongTin = new JPanel();
+        pnlThongTin.setBackground(Color.BLACK);
+        getContentPane().add(pnlThongTin, BorderLayout.CENTER);
+        pnlThongTin.setLayout(null);
+        
+        JLabel lblHinhNen = new JLabel("");
+        lblHinhNen.setIcon(new ImageIcon(Main.class.getResource("/Image/img_TrangChu(1).jpg")));
+        lblHinhNen.setBounds(0, 0, 1300, 740);
+        pnlThongTin.add(lblHinhNen);
+        pnlThongTin.add(capNhatNhanVien);
+        pnlThongTin.add(timKiemSanPham);
+        pnlThongTin.add(banHang);
+        pnlThongTin.add(nhaCungCap);
+        pnlThongTin.add(capNhatKhachHang);
+        
+        //Panel tiêu đề
+        pnlTieuDe = new JPanel();
+        pnlTieuDe.setBackground(new Color(128, 128, 0));
+        pnlTieuDe.setPreferredSize(new Dimension(561, 80));
+	    pnlTieuDe.setLayout(null);
+        
+	    //Tạo tên Tiêu đề
+        lblTieuDe = new JLabel("CỬA HÀNG QUẦN ÁO THỜI TRANG");
+        lblTieuDe.setForeground(Color.GREEN);
+        lblTieuDe.setBackground(new Color(0, 0, 0));
+        lblTieuDe.setFont(new Font("Arial", Font.BOLD, 36));
+        lblTieuDe.setBounds(500, 10, 700, 50);
+        pnlTieuDe.add(lblTieuDe);
+        getContentPane().add(pnlTieuDe, BorderLayout.NORTH);
+        
+        //Panel Menu bên trái
+        pnlMenu = new JPanel();
+        pnlMenu.setBackground(new Color(0, 0, 64));
+        pnlMenu.setPreferredSize(new Dimension(250, 384));
+        
+       
+        
+        getContentPane().add(pnlMenu, BorderLayout.WEST);
+        pnlMenu.setLayout(null);
+        
+        //Tạo panel cho menu tìm kiếm
+        pnlTimKiem = new JPanel();
+        pnlTimKiem.setBounds(0, 80, 250, 37);
+        pnlMenu.add(pnlTimKiem);
+        pnlTimKiem.setLayout(null);
+        
+        //MenuBar Tìm kiếm
+        mnuTimKiem = new JMenuBar();
+        mnuTimKiem.setBounds(0, 0, 250, 37);
+        pnlTimKiem.add(mnuTimKiem);
+        
+        //Menu Tìm kiếm
+        mnTimKiem = new JMenu("Tìm kiếm");
+        mnTimKiem.setMargin(new Insets(2, 70, 2, 70));
+        mnTimKiem.setFont(new Font("Arial",Font.BOLD,24));
+        mnuTimKiem.add(mnTimKiem);
+        
+        //MenuItem Tìm kiếm khách hàng
+        mniTimKiemKhachHang = new JMenuItem("Tìm kiếm khách hàng");
+        mniTimKiemKhachHang.setFont(new Font("Arial",Font.PLAIN , 20));
+        /*mniTimKiemKhachHang.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		quanLiNhanVien.setVisible(false);
+        		pnlThongTin.add(new GUI_TimKiemSanPham());
+        		G.setVisible(true);
+            	pnlThongTin.repaint();
+            	pnlThongTin.revalidate();
+        	}
+        });*/
+        mnTimKiem.add(mniTimKiemKhachHang);
+        
+        //MenuItem Tìm kiếm quần áo
+        mniTimKiemQuanAo = new JMenuItem("Tìm kiếm quần áo");
+        mniTimKiemQuanAo.setFont(new Font("Arial",Font.PLAIN , 20));
+		/*
+		 * mniTimKiemQuanAo.addActionListener(new ActionListener() { public void
+		 * actionPerformed(ActionEvent e) { quanLiNhanVien.setVisible(false);
+		 * pnlThongTin.add(new P); quaao.setVisible(true); pnlThongTin.repaint();
+		 * pnlThongTin.revalidate(); } });
+		 */
+        mnTimKiem.add(mniTimKiemQuanAo);
+        
+        
+        //Panel cho MenuBar Cập nhật       
+        pnlNhanVien = new JPanel();
+        pnlNhanVien.setBounds(0, 160, 250, 37);
+        pnlMenu.add(pnlNhanVien);
+        pnlNhanVien.setLayout(null);
+        
+        //MenuBar Cập nhật
+        mnuNhanVien = new JMenuBar();
+        mnuNhanVien.setBounds(0, 0, 250, 37);
+        pnlNhanVien.add(mnuNhanVien);
+        
+        //Menu Nhân viên
+        mnNhanVien = new JMenu("Nhân Viên");
+        mnNhanVien.setMargin(new Insets(2, 70, 2, 70));
+        mnNhanVien.setFont(new Font("Arial",Font.BOLD,24));
+        mnuNhanVien.add(mnNhanVien);
+        
+        //MenuItem Bán hàng
+        mniBanHang = new JMenuItem("Bán Hàng");
+        mniBanHang.setFont(new Font("Arial",Font.PLAIN , 20));
+        mniBanHang.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		lblHinhNen.setVisible(false);
+        		nhaCungCap.setVisible(false);
+        		timKiemSanPham.setVisible(false);
+	    		capNhatNhanVien.setVisible(false);
+	    		capNhatKhachHang.setVisible(false);
+	    		
+        		pnlThongTin.add(new GUI_BanHang());
+        		banHang.setVisible(true);
+            	pnlThongTin.repaint();
+            	pnlThongTin.revalidate();
+        	}
+        });
+        mnNhanVien.add(mniBanHang);
+        
+      //MenuItem Cập nhật sản phẩm
+        mniTimKiemNhanVien = new JMenuItem("Tìm Kiếm");
+        mniTimKiemNhanVien.setFont(new Font("Arial",Font.PLAIN , 20));
+		/*
+		 * mniCapNhatSanPham.addActionListener(new ActionListener() { public void
+		 * actionPerformed(ActionEvent e) { pn.setVisible(false); pnlThongTin.add(new
+		 * GUI_QuanLyNhanVien()); quanLiNhanVien.setVisible(true);
+		 * pnlThongTin.repaint(); pnlThongTin.revalidate(); } });
+		 */
+        mnNhanVien.add(mniTimKiemNhanVien);
+    
+        
+      //MenuItem Cập nhật nhân viên
+	    mniCapNhatNhanVien = new JMenuItem("Cập nhật");
+	    mniCapNhatNhanVien.setFont(new Font("Arial",Font.PLAIN , 20));
+		
+		mniCapNhatNhanVien.addActionListener(new ActionListener() { 
+			public void	actionPerformed(ActionEvent e) {
+				lblHinhNen.setVisible(false);
+				nhaCungCap.setVisible(false);
+				timKiemSanPham.setVisible(false);
+        		banHang.setVisible(false);
+        		capNhatKhachHang.setVisible(false);
+        		
+        		pnlThongTin.add(new GUI_CapNhatNhanVien());
+        		capNhatNhanVien.setVisible(true);
+            	pnlThongTin.repaint();
+            	pnlThongTin.revalidate();
+		} });
+		 
+	    mnNhanVien.add(mniCapNhatNhanVien);
+	    
+	    JPanel pnlNhaCungCap = new JPanel();
+	    pnlNhaCungCap.setLayout(null);
+	    pnlNhaCungCap.setBounds(0, 240, 250, 37);
+	    pnlMenu.add(pnlNhaCungCap);
+	    
+	    JMenuBar mnuNhaCungCap = new JMenuBar();
+	    mnuNhaCungCap.setBounds(0, 0, 250, 37);
+	    pnlNhaCungCap.add(mnuNhaCungCap);
+	    
+	    JMenu mnNhaCungCap = new JMenu("Nhà cung cấp");
+	     mnNhaCungCap.setFont(new Font("Arial", Font.BOLD, 24));
+	    mnuNhaCungCap.add(mnNhaCungCap);
+	    
+	    JMenuItem mniCapNhatNhaCC = new JMenuItem("Cập nhật");
+	    mniCapNhatNhaCC.addActionListener(new ActionListener() {
+	    	public void actionPerformed(ActionEvent e) {
+	    		lblHinhNen.setVisible(false);
+	    		timKiemSanPham.setVisible(false);
+	    		capNhatNhanVien.setVisible(false);
+	    		banHang.setVisible(false);
+	    		capNhatKhachHang.setVisible(false);
+        		pnlThongTin.add(new GUI_NhaCungCap());
+        		nhaCungCap.setVisible(true);
+            	pnlThongTin.repaint();
+            	pnlThongTin.revalidate();
+	    	}
+	    });
+	    mniCapNhatNhaCC.setFont(new Font("Arial", Font.PLAIN, 20));
+	    mnNhaCungCap.add(mniCapNhatNhaCC);
+	    
+	    pnlKhachHang = new JPanel();
+	    pnlKhachHang.setLayout(null);
+	    pnlKhachHang.setBounds(0, 320, 250, 37);
+	    pnlMenu.add(pnlKhachHang);
+	    
+	    mnuKhachHang = new JMenuBar();
+	    mnuKhachHang.setFont(new Font("Arial", Font.BOLD, 24));
+	    mnuKhachHang.setBounds(0, 0, 250, 37);
+	    pnlKhachHang.add(mnuKhachHang);
+	    
+	    mnKhachHang = new JMenu("Khách hàng");
+	    mnKhachHang.setFont(new Font("Arial", Font.BOLD, 24));
+	    mnuKhachHang.add(mnKhachHang);
+	    
+	    JMenuItem mniCapNhatKhachHang = new JMenuItem("Cập nhật");
+	    mniCapNhatKhachHang.addActionListener(new ActionListener() {
+	    	public void actionPerformed(ActionEvent e) {
+	    		lblHinhNen.setVisible(false);
+	    		nhaCungCap.setVisible(false);
+	    		timKiemSanPham.setVisible(false);
+	    		capNhatNhanVien.setVisible(false);
+	    		banHang.setVisible(false);
+	    		
+        		pnlThongTin.add(new GUI_QuanLiKhachHang());
+        		capNhatKhachHang.setVisible(true);
+            	pnlThongTin.repaint();
+            	pnlThongTin.revalidate();
+	    	}
+	    });
+	    mniCapNhatKhachHang.setFont(new Font("Arial", Font.PLAIN, 20));
+	    mnKhachHang.add(mniCapNhatKhachHang);
+	    
+	    JLabel lblTenNhom = new JLabel("Nhóm 14");
+	    lblTenNhom.setFont(new Font("Stencil", Font.BOLD | Font.ITALIC, 30));
+	    lblTenNhom.setForeground(new Color(0, 255, 0));
+	    lblTenNhom.setBounds(51, 22, 146, 37);
+	    pnlMenu.add(lblTenNhom);
+    }
+    	
+	    
+
+        
+    public static void main(String args[]) {
+            
+                new Main().setVisible(true);
+            }
+}

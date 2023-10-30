@@ -1,0 +1,149 @@
+package GUI;
+
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.JTextField;
+import javax.swing.JComboBox;
+import javax.swing.JButton;
+import java.awt.Color;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JScrollPane;
+import javax.swing.ImageIcon;
+
+public class GUI_CapNhatSanPham extends JPanel {
+
+	private static final long serialVersionUID = 1L;
+	private JTextField txtTenquanao;
+	private JTextField txtDongia;
+	private JTextField txtSoluong;
+	private JTable table;
+	private JTextField txtTiemkiem;
+
+	/**
+	 * Create the panel.
+	 */
+	public GUI_CapNhatSanPham() {
+		setLayout(null);
+		
+		JLabel lblTieude = new JLabel("Quản lí quần áo ");
+		lblTieude.setFont(new Font("Tahoma", Font.BOLD, 30));
+		lblTieude.setBounds(518, 0, 251, 50);
+		add(lblTieude);
+		
+		JLabel lblTenquanao = new JLabel("Tên quần áo ");
+		lblTenquanao.setFont(new Font("Tahoma", Font.ITALIC, 20));
+		lblTenquanao.setBounds(221, 122, 129, 37);
+		add(lblTenquanao);
+		
+		txtTenquanao = new JTextField();
+		txtTenquanao.setBounds(376, 126, 216, 37);
+		add(txtTenquanao);
+		txtTenquanao.setColumns(10);
+		
+		JLabel lblDongia = new JLabel("Giá");
+		lblDongia.setFont(new Font("Tahoma", Font.ITALIC, 20));
+		lblDongia.setBounds(247, 183, 82, 37);
+		add(lblDongia);
+		
+		txtDongia = new JTextField();
+		txtDongia.setColumns(10);
+		txtDongia.setBounds(376, 187, 216, 37);
+		add(txtDongia);
+		
+		JLabel lblSoluong = new JLabel("Số lượng ");
+		lblSoluong.setFont(new Font("Tahoma", Font.ITALIC, 20));
+		lblSoluong.setBounds(239, 246, 90, 37);
+		add(lblSoluong);
+		
+		txtSoluong = new JTextField();
+		txtSoluong.setColumns(10);
+		txtSoluong.setBounds(376, 246, 216, 37);
+		add(txtSoluong);
+		
+		JLabel lblDanhmuc = new JLabel("Loại quần áo ");
+		lblDanhmuc.setFont(new Font("Tahoma", Font.ITALIC, 20));
+		lblDanhmuc.setBounds(734, 122, 96, 37);
+		add(lblDanhmuc);
+		
+		JLabel lblKichco = new JLabel("Kích thước");
+		lblKichco.setFont(new Font("Tahoma", Font.ITALIC, 20));
+		lblKichco.setBounds(734, 183, 82, 37);
+		add(lblKichco);
+		
+		JLabel lblNCC = new JLabel("Nhà cung cấp");
+		lblNCC.setFont(new Font("Tahoma", Font.ITALIC, 20));
+		lblNCC.setBounds(703, 242, 141, 37);
+		add(lblNCC);
+		
+		JComboBox cmbDanhmuc = new JComboBox();
+		cmbDanhmuc.setBounds(854, 128, 170, 33);
+		add(cmbDanhmuc);
+		
+		JComboBox cmbKichco = new JComboBox();
+		cmbKichco.setBounds(854, 189, 170, 33);
+		add(cmbKichco);
+		
+		JComboBox cmbNCC = new JComboBox();
+		cmbNCC.setBounds(854, 250, 170, 33);
+		add(cmbNCC);
+		
+		JButton btnThem = new JButton("Thêm");
+		btnThem.setForeground(new Color(60, 179, 113));
+		btnThem.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnThem.setBounds(208, 310, 113, 37);
+		add(btnThem);
+		
+		JButton btnXoa = new JButton("Xóa");
+		btnXoa.setForeground(new Color(60, 179, 113));
+		btnXoa.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnXoa.setBounds(447, 310, 113, 37);
+		add(btnXoa);
+		
+		JButton btnSua = new JButton("Sửa");
+		btnSua.setForeground(new Color(60, 179, 113));
+		btnSua.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnSua.setBounds(703, 310, 113, 37);
+		add(btnSua);
+		
+		JButton btnXoatrang = new JButton("Xóa trắng");
+		btnXoatrang.setForeground(new Color(60, 179, 113));
+		btnXoatrang.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnXoatrang.setBounds(939, 310, 129, 37);
+		add(btnXoatrang);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(176, 378, 970, 249);
+		add(scrollPane);
+		
+		table = new JTable();
+		scrollPane.setViewportView(table);
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null},
+			},
+			new String[] {
+				"Tên quàn áo", "Giá ", "Số lượng", "Loại sản phẩm", "Kích thước", "Nhà cung cấp"
+			}
+		));
+		
+		JLabel lblTimkiemquanao = new JLabel("Tên quần áo");
+		lblTimkiemquanao.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblTimkiemquanao.setBounds(434, 73, 188, 25);
+		add(lblTimkiemquanao);
+		
+		txtTiemkiem = new JTextField();
+		txtTiemkiem.setBounds(658, 70, 216, 38);
+		add(txtTiemkiem);
+		txtTiemkiem.setColumns(10);
+		
+		JButton btnTimkiem = new JButton("");
+		btnTimkiem.setIcon(new ImageIcon(GUI_CapNhatSanPham.class.getResource("/Image/icon_TimKiem.png")));
+		btnTimkiem.setBounds(904, 66, 56, 47);
+		add(btnTimkiem);
+
+	}
+}
+

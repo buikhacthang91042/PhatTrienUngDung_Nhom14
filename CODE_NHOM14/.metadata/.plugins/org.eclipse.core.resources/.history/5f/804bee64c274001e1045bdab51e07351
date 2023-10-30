@@ -1,0 +1,28 @@
+package GUI;
+
+import java.awt.Color;
+import java.awt.Font;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+public class Panel2 extends JPanel {
+
+    /**
+     * Creates new form Panel1
+     */
+    public Panel2() {
+    	
+    	setBackground(new Color(255, 255, 255));
+    	
+    	JLabel lblNewLabel = new JLabel("Quản lí khách hàng");
+    	lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 58));
+    	
+    	add(lblNewLabel);
+    } 
+
+        
+}
+

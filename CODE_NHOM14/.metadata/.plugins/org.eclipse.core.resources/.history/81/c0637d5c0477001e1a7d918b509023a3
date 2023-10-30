@@ -1,0 +1,146 @@
+package entity;
+
+import java.util.Date;
+
+
+public class DonDatHang {
+	private String maDonHang;
+	private KhachHang maKH;
+	private QuanAo maQuanAo;
+	private float gia;
+	private LoaiQuanAo loaiQuanAo;
+	private NhanVien maNV;
+	private Date ngayDat;
+	public DonDatHang(String maDonHang, KhachHang maKH, QuanAo maQuanAo,
+			float gia, LoaiQuanAo loaiQuanAo, NhanVien maNV,
+			Date ngayDat) {
+		super();
+		this.maDonHang = maDonHang;
+		this.maKH = maKH;
+		this.maQuanAo = maQuanAo;
+		this.gia = gia;
+		this.loaiQuanAo = loaiQuanAo;
+		this.maNV = maNV;
+		this.ngayDat = ngayDat;
+	}
+	
+	public String getMaDonHang() {
+		return maDonHang;
+	}
+
+	public void setMaDonHang(String maPhieudat) {
+		this.maDonHang = maPhieudat;
+	}
+
+	public KhachHang getMaKH() {
+		return maKH;
+	}
+
+	public void setMaKH(KhachHang maKH) {
+		this.maKH = maKH;
+	}
+
+	public QuanAo getMaQuanAo() {
+		return maQuanAo;
+	}
+
+	public void setMaQuanAo(QuanAo maSP) {
+		this.maQuanAo = maSP;
+	}
+
+	public float getGia() {
+		return gia;
+	}
+
+	public void setGia(float gia) {
+		this.gia = gia;
+	}
+
+	public LoaiQuanAo getLoaiQuanAo() {
+		return loaiQuanAo;
+	}
+
+	public void setLoaiQuanAo(LoaiQuanAo loaiSP) {
+		this.loaiQuanAo = loaiSP;
+	}
+
+	
+
+	public NhanVien getMaNV() {
+		return maNV;
+	}
+
+	public void setMaNV(NhanVien maNV) {
+		this.maNV = maNV;
+	}
+
+	public Date getNgayDat() {
+		return ngayDat;
+	}
+
+	public void setNgayDat(Date ngayDat) {
+		this.ngayDat = ngayDat;
+	}
+
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((maKH == null) ? 0 : maKH.hashCode());
+		
+		result = prime * result + ((maNV == null) ? 0 : maNV.hashCode());
+		result = prime * result
+				+ ((maDonHang == null) ? 0 : maDonHang.hashCode());
+		result = prime * result + ((maQuanAo == null) ? 0 : maQuanAo.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		DonDatHang other = (DonDatHang) obj;
+		if (maKH == null) {
+			if (other.maKH != null)
+				return false;
+		} else if (!maKH.equals(other.maKH))
+			return false;
+		
+		if (maNV == null) {
+			if (other.maNV != null)
+				return false;
+		} else if (!maNV.equals(other.maNV))
+			return false;
+		if (maDonHang == null) {
+			if (other.maDonHang != null)
+				return false;
+		} else if (!maDonHang.equals(other.maDonHang))
+			return false;
+		if (maQuanAo == null) {
+			if (other.maQuanAo != null)
+				return false;
+		} else if (!maQuanAo.equals(other.maQuanAo))
+			return false;
+		return true;
+	}
+
+	
+	
+	@Override
+	public String toString() {
+		return "DonDatHang [maDonHang=" + maDonHang + ", maKH=" + maKH + ", maSP=" + maQuanAo + ", gia=" + gia
+				+ ", loaiQuanAo=" + loaiQuanAo + ", maNV=" + maNV + ", ngayDat=" + ngayDat + "]";
+	}
+
+	public DonDatHang() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+}
+	

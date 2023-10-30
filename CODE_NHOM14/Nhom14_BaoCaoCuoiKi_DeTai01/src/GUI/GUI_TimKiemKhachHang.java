@@ -1,0 +1,118 @@
+package GUI;
+
+import javax.swing.JPanel;
+
+import java.awt.Rectangle;
+
+import javax.swing.JLabel;
+
+import java.awt.Font;
+
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.JComboBox;
+import javax.swing.JButton;
+import javax.swing.table.DefaultTableModel;
+
+import java.awt.Color;
+
+public class GUI_TimKiemKhachHang extends JPanel {
+	private JTextField txtTenKH;
+	private JTextField txtSdt;
+	private JComboBox cboGioiTinh;
+
+	
+	public GUI_TimKiemKhachHang() {
+		setBackground(new Color(0, 64, 64));
+		setBounds(new Rectangle(0, 0, 1308, 678));
+		setLayout(null);
+		
+		JPanel pnlNhapThongTinKhachHang = new JPanel();
+		pnlNhapThongTinKhachHang.setBounds(110, 71, 1054, 200);
+		add(pnlNhapThongTinKhachHang);
+		pnlNhapThongTinKhachHang.setLayout(null);
+		
+		JLabel lblTenKhachHang = new JLabel("Tên khách hàng");
+		lblTenKhachHang.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblTenKhachHang.setBounds(97, 33, 225, 32);
+		pnlNhapThongTinKhachHang.add(lblTenKhachHang);
+		
+		txtTenKH = new JTextField();
+		txtTenKH.setColumns(10);
+		txtTenKH.setBounds(237, 33, 225, 32);
+		pnlNhapThongTinKhachHang.add(txtTenKH);
+		
+		JLabel lblSdt = new JLabel("Số điện thoại");
+		lblSdt.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblSdt.setBounds(97, 101, 225, 32);
+		pnlNhapThongTinKhachHang.add(lblSdt);
+		
+		txtSdt = new JTextField();
+		txtSdt.setColumns(10);
+		txtSdt.setBounds(237, 101, 225, 32);
+		pnlNhapThongTinKhachHang.add(txtSdt);
+		
+		JLabel lblGioiTinh = new JLabel("Giới tính");
+		lblGioiTinh.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblGioiTinh.setBounds(607, 101, 225, 32);
+		pnlNhapThongTinKhachHang.add(lblGioiTinh);
+		
+		cboGioiTinh = new JComboBox();
+		cboGioiTinh.setBounds(762, 103, 225, 32);
+		pnlNhapThongTinKhachHang.add(cboGioiTinh);
+		cboGioiTinh.addItem("Nam");
+		cboGioiTinh.addItem("Nữ");
+		
+		JButton btnTimKiem = new JButton("Tìm kiếm");
+		btnTimKiem.setBackground(new Color(51, 204, 153));
+		btnTimKiem.setFont(new Font("Tahoma", Font.BOLD, 15));
+		btnTimKiem.setBounds(762, 158, 180, 32);
+		pnlNhapThongTinKhachHang.add(btnTimKiem);
+		
+		JLabel lblMaKH = new JLabel("Mã khách hàng");
+		lblMaKH.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblMaKH.setBounds(607, 33, 225, 32);
+		pnlNhapThongTinKhachHang.add(lblMaKH);
+		
+		JComboBox cboMaKhachHang = new JComboBox();
+		cboMaKhachHang.setBounds(762, 33, 225, 32);
+		pnlNhapThongTinKhachHang.add(cboMaKhachHang);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(76, 341, 1158, 255);
+		add(scrollPane);
+		
+		JTable table = new JTable();
+		table.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		scrollPane.setViewportView(table);
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null},
+			},
+			new String[] {
+				"Mã khách hàng", "Tên khách hàng", "Giới tính", "Số điện thoại", "Địa chỉ"
+				}
+		));
+		
+		JLabel lblTimKiemKhachHang = new JLabel("Tìm kiếm khách hàng");
+		lblTimKiemKhachHang.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 35));
+		lblTimKiemKhachHang.setForeground(new Color(135, 206, 235));
+		lblTimKiemKhachHang.setBounds(477, 20, 386, 41);
+		add(lblTimKiemKhachHang);
+		
+		JLabel lblDanhSachKhachHang = new JLabel("Danh sách khách hàng");
+		lblDanhSachKhachHang.setForeground(new Color(135, 206, 235));
+		lblDanhSachKhachHang.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 20));
+		lblDanhSachKhachHang.setBounds(76, 299, 230, 41);
+		add(lblDanhSachKhachHang);
+
+	}
+
+}
+

@@ -1,0 +1,158 @@
+package entity;
+
+import java.util.Date;
+import java.util.Objects;
+
+public class Phieudathang {
+	private String maPhieudat;
+	private Khachhang maKH;
+	private Sanpham maSP;
+	private float gia;
+	private Loaisanpham loaiSP;
+	private Nhacungcap maNCC;
+	private Nhanvien maNV;
+	private Date ngayDat;
+	public Phieudathang(String maPhieudat, Khachhang maKH, Sanpham maSP,
+			float gia, Loaisanpham loaiSP, Nhacungcap maNCC, Nhanvien maNV,
+			Date ngayDat) {
+		super();
+		this.maPhieudat = maPhieudat;
+		this.maKH = maKH;
+		this.maSP = maSP;
+		this.gia = gia;
+		this.loaiSP = loaiSP;
+		this.maNCC = maNCC;
+		this.maNV = maNV;
+		this.ngayDat = ngayDat;
+	}
+	
+	public String getMaPhieudat() {
+		return maPhieudat;
+	}
+
+	public void setMaPhieudat(String maPhieudat) {
+		this.maPhieudat = maPhieudat;
+	}
+
+	public Khachhang getMaKH() {
+		return maKH;
+	}
+
+	public void setMaKH(Khachhang maKH) {
+		this.maKH = maKH;
+	}
+
+	public Sanpham getMaSP() {
+		return maSP;
+	}
+
+	public void setMaSP(Sanpham maSP) {
+		this.maSP = maSP;
+	}
+
+	public float getGia() {
+		return gia;
+	}
+
+	public void setGia(float gia) {
+		this.gia = gia;
+	}
+
+	public Loaisanpham getLoaiSP() {
+		return loaiSP;
+	}
+
+	public void setLoaiSP(Loaisanpham loaiSP) {
+		this.loaiSP = loaiSP;
+	}
+
+	public Nhacungcap getMaNCC() {
+		return maNCC;
+	}
+
+	public void setMaNCC(Nhacungcap maNCC) {
+		this.maNCC = maNCC;
+	}
+
+	public Nhanvien getMaNV() {
+		return maNV;
+	}
+
+	public void setMaNV(Nhanvien maNV) {
+		this.maNV = maNV;
+	}
+
+	public Date getNgayDat() {
+		return ngayDat;
+	}
+
+	public void setNgayDat(Date ngayDat) {
+		this.ngayDat = ngayDat;
+	}
+
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((maKH == null) ? 0 : maKH.hashCode());
+		result = prime * result + ((maNCC == null) ? 0 : maNCC.hashCode());
+		result = prime * result + ((maNV == null) ? 0 : maNV.hashCode());
+		result = prime * result
+				+ ((maPhieudat == null) ? 0 : maPhieudat.hashCode());
+		result = prime * result + ((maSP == null) ? 0 : maSP.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Phieudathang other = (Phieudathang) obj;
+		if (maKH == null) {
+			if (other.maKH != null)
+				return false;
+		} else if (!maKH.equals(other.maKH))
+			return false;
+		if (maNCC == null) {
+			if (other.maNCC != null)
+				return false;
+		} else if (!maNCC.equals(other.maNCC))
+			return false;
+		if (maNV == null) {
+			if (other.maNV != null)
+				return false;
+		} else if (!maNV.equals(other.maNV))
+			return false;
+		if (maPhieudat == null) {
+			if (other.maPhieudat != null)
+				return false;
+		} else if (!maPhieudat.equals(other.maPhieudat))
+			return false;
+		if (maSP == null) {
+			if (other.maSP != null)
+				return false;
+		} else if (!maSP.equals(other.maSP))
+			return false;
+		return true;
+	}
+
+	
+	@Override
+	public String toString() {
+		return "Phieudathang [maPhieudat=" + maPhieudat + ", maKH=" + maKH
+				+ ", maSP=" + maSP + ", gia=" + gia + ", loaiSP=" + loaiSP
+				+ ", maNCC=" + maNCC + ", maNV=" + maNV + ", ngayDat="
+				+ ngayDat + "]";
+	}
+	public Phieudathang() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+}
+	
