@@ -1,0 +1,135 @@
+package GUI;
+
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+
+public class GUI_LoaiQuanAo extends JPanel {
+
+	private static final long serialVersionUID = 1L;
+	private JTextField txtTenquanao;
+	private JTable table;
+	private JTextField txtTiemkiem;
+	private JTextField txtMaLoaiQuanAo;
+
+	
+	public GUI_LoaiQuanAo() {
+		setLayout(null);
+		setBackground(new Color(0, 64, 64));
+		JLabel lblTieude = new JLabel("Loại quần áo ");
+		lblTieude.setForeground(new Color(135, 206, 235));
+		lblTieude.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 35));
+		lblTieude.setBounds(518, 0, 277, 50);
+		add(lblTieude);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(75, 382, 1139, 249);
+		add(scrollPane);
+		
+		table = new JTable();
+		scrollPane.setViewportView(table);
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null},
+			},
+			new String[] {
+				"Mã loại quần áo", "Tên loại quần áo"
+			}
+		));
+		
+		JPanel pnlThongTinQuanAo = new JPanel();
+		pnlThongTinQuanAo.setBounds(167, 57, 912, 257);
+		add(pnlThongTinQuanAo);
+		pnlThongTinQuanAo.setLayout(null);
+		
+		JLabel lblTenLoaiQuanAo = new JLabel("Tên loại quần áo ");
+		lblTenLoaiQuanAo.setBounds(34, 108, 170, 25);
+		pnlThongTinQuanAo.add(lblTenLoaiQuanAo);
+		lblTenLoaiQuanAo.setFont(new Font("Tahoma", Font.ITALIC, 20));
+		
+		txtTenquanao = new JTextField();
+		txtTenquanao.setBounds(202, 100, 216, 37);
+		pnlThongTinQuanAo.add(txtTenquanao);
+		txtTenquanao.setColumns(10);
+		
+		JLabel lblMaLoaiQuanAo = new JLabel("Mã loại quần áo ");
+		lblMaLoaiQuanAo.setBounds(494, 96, 159, 37);
+		pnlThongTinQuanAo.add(lblMaLoaiQuanAo);
+		lblMaLoaiQuanAo.setFont(new Font("Tahoma", Font.ITALIC, 20));
+		
+		JButton btnThem = new JButton("THÊM");
+		btnThem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnThem.setBounds(119, 181, 113, 37);
+		pnlThongTinQuanAo.add(btnThem);
+		btnThem.setForeground(new Color(60, 179, 113));
+		btnThem.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		
+		JButton btnXoa = new JButton("XÓA");
+		btnXoa.setBounds(273, 181, 113, 37);
+		pnlThongTinQuanAo.add(btnXoa);
+		btnXoa.setForeground(new Color(60, 179, 113));
+		btnXoa.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		
+		JButton btnSua = new JButton("SỬA");
+		btnSua.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnSua.setBounds(436, 181, 113, 37);
+		pnlThongTinQuanAo.add(btnSua);
+		btnSua.setForeground(new Color(60, 179, 113));
+		btnSua.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		
+		JButton btnXoatrang = new JButton("XÓA TRẮNG");
+		btnXoatrang.setBounds(603, 181, 152, 37);
+		pnlThongTinQuanAo.add(btnXoatrang);
+		btnXoatrang.setForeground(new Color(60, 179, 113));
+		btnXoatrang.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		
+		JLabel lblTimkiemquanao = new JLabel("Tìm kiếm loại quần áo");
+		lblTimkiemquanao.setBounds(183, 21, 235, 25);
+		pnlThongTinQuanAo.add(lblTimkiemquanao);
+		lblTimkiemquanao.setFont(new Font("Tahoma", Font.BOLD, 20));
+		
+		txtTiemkiem = new JTextField();
+		txtTiemkiem.setBounds(417, 19, 204, 33);
+		pnlThongTinQuanAo.add(txtTiemkiem);
+		txtTiemkiem.setColumns(10);
+		
+		JButton btnTimkiem = new JButton("");
+		btnTimkiem.setSelectedIcon(new ImageIcon(GUI_CapNhatQuanAo.class.getResource("/Image/icon_TimKiem.png")));
+		btnTimkiem.setBounds(632, 18, 46, 33);
+		pnlThongTinQuanAo.add(btnTimkiem);
+		btnTimkiem.setIcon(new ImageIcon(GUI_CapNhatQuanAo.class.getResource("/Image/icon_TimKiem.png")));
+		
+		txtMaLoaiQuanAo = new JTextField();
+		txtMaLoaiQuanAo.setColumns(10);
+		txtMaLoaiQuanAo.setBounds(644, 96, 216, 37);
+		pnlThongTinQuanAo.add(txtMaLoaiQuanAo);
+		
+		JLabel lblDanhSachLoaiQuanAo = new JLabel("Danh sách loại quần áo");
+		lblDanhSachLoaiQuanAo.setForeground(new Color(135, 206, 235));
+		lblDanhSachLoaiQuanAo.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 20));
+		lblDanhSachLoaiQuanAo.setBounds(75, 349, 234, 37);
+		add(lblDanhSachLoaiQuanAo);
+	
+	}
+}
+
+

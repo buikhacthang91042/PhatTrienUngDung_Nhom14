@@ -8,10 +8,14 @@ import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.SystemColor;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.JTable;
 import javax.swing.JScrollBar;
 import javax.swing.table.DefaultTableModel;
+
+import connect.ConnectDB;
+
 import javax.swing.JScrollPane;
 
 public class GUI_NhaCungCap extends JPanel {
@@ -33,6 +37,14 @@ public class GUI_NhaCungCap extends JPanel {
 		lblNhacungcap.setBounds(512, 0, 256, 69);
 		lblNhacungcap.setForeground(new Color(135, 206, 235));
 		add(lblNhacungcap);
+		
+		//ConnectDB
+ 		try {
+			ConnectDB.getInstance().connect();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		JScrollPane scrThongTinNhaCungCap = new JScrollPane();
 		scrThongTinNhaCungCap.setBounds(75, 415, 1126, 177);

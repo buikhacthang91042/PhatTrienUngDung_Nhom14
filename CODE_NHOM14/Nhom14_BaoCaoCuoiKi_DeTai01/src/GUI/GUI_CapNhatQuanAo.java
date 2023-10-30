@@ -9,9 +9,13 @@ import javax.swing.JButton;
 import java.awt.Color;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
+import connect.ConnectDB;
+
 import javax.swing.JScrollPane;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.DefaultComboBoxModel;
 
@@ -24,9 +28,7 @@ public class GUI_CapNhatQuanAo extends JPanel {
 	private JTable table;
 	private JTextField txtTiemkiem;
 
-	/**
-	 * Create the panel.
-	 */
+	
 	public GUI_CapNhatQuanAo() {
 		setLayout(null);
 		setBackground(new Color(0, 64, 64));
@@ -35,6 +37,14 @@ public class GUI_CapNhatQuanAo extends JPanel {
 		lblTieude.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 35));
 		lblTieude.setBounds(518, 0, 277, 50);
 		add(lblTieude);
+		
+		//ConnectDb
+		try {
+			ConnectDB.getInstance().connect();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(75, 408, 1139, 249);

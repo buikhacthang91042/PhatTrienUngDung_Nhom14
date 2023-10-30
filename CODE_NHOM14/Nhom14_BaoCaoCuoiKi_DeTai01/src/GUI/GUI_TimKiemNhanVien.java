@@ -14,9 +14,13 @@ import java.awt.SystemColor;
 import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
+
+import connect.ConnectDB;
+
 import javax.swing.DefaultComboBoxModel;
 
 public class GUI_TimKiemNhanVien extends JPanel {
@@ -24,9 +28,7 @@ public class GUI_TimKiemNhanVien extends JPanel {
 	private JTextField txtSdt;
 	private JTextField txtNgayVaoLam;
 
-	/**
-	 * Create the panel.
-	 */
+	
 	public GUI_TimKiemNhanVien() {
 		setBounds(new Rectangle(0, 0, 1308, 678));
 		setLayout(null);
@@ -35,6 +37,14 @@ public class GUI_TimKiemNhanVien extends JPanel {
 		pnForm.setBounds(134, 56, 1019, 200);
 		add(pnForm);
 		pnForm.setLayout(null);
+		
+		//ConnectDB
+ 		try {
+			ConnectDB.getInstance().connect();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		JLabel lblTenNhanVien = new JLabel("Tên nhân viên");
 		lblTenNhanVien.setFont(new Font("Tahoma", Font.BOLD, 15));

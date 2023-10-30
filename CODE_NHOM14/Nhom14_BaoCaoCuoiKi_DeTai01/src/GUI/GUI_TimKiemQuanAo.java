@@ -15,8 +15,11 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.table.DefaultTableModel;
 
+import connect.ConnectDB;
+
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
 public class GUI_TimKiemQuanAo extends JPanel {
@@ -32,6 +35,14 @@ public class GUI_TimKiemQuanAo extends JPanel {
 		pnForm.setBounds(71, 58, 1168, 200);
 		add(pnForm);
 		pnForm.setLayout(null);
+		
+		//ConnectDB
+ 		try {
+			ConnectDB.getInstance().connect();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		JLabel lblTenQuanAo = new JLabel("Tên quần áo");
 		lblTenQuanAo.setFont(new Font("Tahoma", Font.BOLD, 22));

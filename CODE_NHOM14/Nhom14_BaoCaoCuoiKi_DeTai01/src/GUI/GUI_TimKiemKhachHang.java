@@ -3,6 +3,7 @@ package GUI;
 import javax.swing.JPanel;
 
 import java.awt.Rectangle;
+import java.sql.SQLException;
 
 import javax.swing.JLabel;
 
@@ -14,6 +15,8 @@ import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.table.DefaultTableModel;
+
+import connect.ConnectDB;
 
 import java.awt.Color;
 
@@ -27,6 +30,14 @@ public class GUI_TimKiemKhachHang extends JPanel {
 		setBackground(new Color(0, 64, 64));
 		setBounds(new Rectangle(0, 0, 1308, 678));
 		setLayout(null);
+		
+		//ConnectDB
+ 		try {
+			ConnectDB.getInstance().connect();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		JPanel pnlNhapThongTinKhachHang = new JPanel();
 		pnlNhapThongTinKhachHang.setBounds(110, 71, 1054, 200);

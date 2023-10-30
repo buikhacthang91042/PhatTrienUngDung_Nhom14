@@ -16,7 +16,11 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+
+import connect.ConnectDB;
+
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
@@ -34,6 +38,13 @@ public class GUI_CapNhatNhanVien extends JPanel {
 	private DefaultTableModel model;
 	private JTable tblThongTinNhanVien;
     public GUI_CapNhatNhanVien() {
+    	//ConnectDB
+ 		try {
+			ConnectDB.getInstance().connect();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     	setBackground(new Color(0, 64, 64));
     	setLayout(null);
     	

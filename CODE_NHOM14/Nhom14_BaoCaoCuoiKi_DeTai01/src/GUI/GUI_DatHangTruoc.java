@@ -3,6 +3,7 @@ package GUI;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Rectangle;
+import java.sql.SQLException;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -11,6 +12,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+
+import connect.ConnectDB;
 
 public class GUI_DatHangTruoc extends JPanel{
 	private JTextField txtTimKiemDonHang;
@@ -25,6 +28,15 @@ public class GUI_DatHangTruoc extends JPanel{
     	setBounds(new Rectangle(0, 0, 1308, 678));
     	setLayout(null);
         setBackground(new Color(0, 64, 64));
+        
+      //ConnectDB
+ 		try {
+			ConnectDB.getInstance().connect();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
         JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(21, 92, 1265, 416);
 		add(scrollPane);

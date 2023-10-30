@@ -17,4 +17,6 @@
     <fullyQualifiedTypeName name="GUI.GUI_TimKiemNhaCungCap"/>
     <fullyQualifiedTypeName name="javax.swing.JPanel"/>
     <fullyQualifiedTypeName name="entity.Nhacungcap"/>
+    <fullyQualifiedTypeName name="GUI.GUI_LoaiQuanAo"/>
+    <fullyQualifiedTypeName name="connect.ConnectDB"/>
 </qualifiedTypeNameHistroy>

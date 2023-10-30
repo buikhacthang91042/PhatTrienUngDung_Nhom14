@@ -10,10 +10,14 @@ import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 
 import java.awt.SystemColor;
+import java.sql.SQLException;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
+import connect.ConnectDB;
+
 import java.awt.Panel;
 import java.awt.Button;
 import java.awt.Color;
@@ -27,12 +31,17 @@ public class GUI_HoaDon extends javax.swing.JPanel {
 
     public GUI_HoaDon() {
     	setBounds(new Rectangle(0, 0, 1308, 678));
-        initComponents();
-    }
-
-    private void initComponents() {
         setLayout(null);
         setBackground(new Color(0, 64, 64));
+        
+      //ConnectDB
+ 		try {
+			ConnectDB.getInstance().connect();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
         JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(21, 92, 1265, 416);
 		add(scrollPane);

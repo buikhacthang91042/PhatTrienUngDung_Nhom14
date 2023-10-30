@@ -1,6 +1,9 @@
 package GUI;
 
 import javax.swing.JPanel;
+
+import connect.ConnectDB;
+
 import java.awt.Rectangle;
 import java.awt.SystemColor;
 import javax.swing.JLabel;
@@ -9,6 +12,7 @@ import javax.swing.JComboBox;
 import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
 public class GUI_ThongKeDoanhThu extends JPanel {
@@ -18,6 +22,14 @@ public class GUI_ThongKeDoanhThu extends JPanel {
 		setBackground(new Color(0, 64, 64));
 		setBounds(new Rectangle(0, 0, 1308, 678));
 		setLayout(null);
+		
+		//ConnectDB
+ 		try {
+			ConnectDB.getInstance().connect();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		JPanel pnForm = new JPanel();
 		pnForm.setLayout(null);

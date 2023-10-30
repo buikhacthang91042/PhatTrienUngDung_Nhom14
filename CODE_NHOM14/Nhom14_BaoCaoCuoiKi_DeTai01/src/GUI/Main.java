@@ -51,6 +51,7 @@ public class Main extends JFrame {
     private JMenuItem mniDoanhThu;
     private JMenuItem mniTimKiemNhaCungCap;
     private JMenuItem mniDatHangTruoc;
+    private JMenuItem mniLoaiQuanAo;
     
     public Main() {
     	setTitle("Cửa hàng quần áo thời trang");
@@ -84,7 +85,8 @@ public class Main extends JFrame {
         timKiemNhaCungCap.setBounds(0, 0, 1308, 710);
         GUI_DatHangTruoc datHangTruoc = new GUI_DatHangTruoc();
         datHangTruoc.setBounds(0, 0, 1308, 710);
-        
+        GUI_LoaiQuanAo loaiQuanAo = new GUI_LoaiQuanAo();
+        loaiQuanAo.setBounds(0, 0, 1308, 710);;
         
         capNhatQuanAo.setVisible(false);
         capNhatNhanVien.setVisible(false);
@@ -98,6 +100,9 @@ public class Main extends JFrame {
         thongKeDoanhThu.setVisible(false);
         timKiemNhaCungCap.setVisible(false);
         datHangTruoc.setVisible(false);
+        loaiQuanAo.setVisible(false);
+        
+        
         //Tạo panel chứa các thông tin
         
         pnlThongTin = new JPanel();
@@ -121,7 +126,7 @@ public class Main extends JFrame {
         pnlThongTin.add(thongKeDoanhThu);
         pnlThongTin.add(timKiemNhaCungCap);
         pnlThongTin.add(datHangTruoc);
-        
+        pnlThongTin.add(loaiQuanAo);
         
         //Panel tiêu đề
         pnlTieuDe = new JPanel();
@@ -154,6 +159,7 @@ public class Main extends JFrame {
         lblTenNhom.addMouseListener(new MouseAdapter() {
         	@Override
         	public void mouseClicked(MouseEvent e) {
+        		loaiQuanAo.setVisible(false);
         		datHangTruoc.setVisible(false);
         		timKiemNhaCungCap.setVisible(false);
         		thongKeDoanhThu.setVisible(false);
@@ -198,6 +204,7 @@ public class Main extends JFrame {
         mniBanHang.setFont(new Font("Arial",Font.PLAIN , 20));
         mniBanHang.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
+        		loaiQuanAo.setVisible(false);
         		datHangTruoc.setVisible(false);
         		timKiemNhaCungCap.setVisible(false);
         		thongKeDoanhThu.setVisible(false);
@@ -227,6 +234,7 @@ public class Main extends JFrame {
 		
 		mniCapNhatNhanVien.addActionListener(new ActionListener() { 
 			public void	actionPerformed(ActionEvent e) {
+				loaiQuanAo.setVisible(false);
 				datHangTruoc.setVisible(false);
 				timKiemNhaCungCap.setVisible(false);
 				thongKeDoanhThu.setVisible(false);
@@ -252,6 +260,7 @@ public class Main extends JFrame {
 	    mniTimNhanVien = new JMenuItem("Tìm kiếm");
 	    mniTimNhanVien.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
+	    		loaiQuanAo.setVisible(false);
 	    		datHangTruoc.setVisible(false);
 	    		timKiemNhaCungCap.setVisible(false);
 	    		thongKeDoanhThu.setVisible(false);
@@ -295,6 +304,7 @@ public class Main extends JFrame {
 	    mniCapNhatNhaCC.setIcon(new ImageIcon(Main.class.getResource("/Image/icon_CapNhat.png")));
 	    mniCapNhatNhaCC.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
+	    		loaiQuanAo.setVisible(false);
 	    		datHangTruoc.setVisible(false);
 	    		timKiemNhaCungCap.setVisible(false);
 	    		thongKeDoanhThu.setVisible(false);
@@ -319,6 +329,7 @@ public class Main extends JFrame {
 	    mniTimKiemNhaCungCap = new JMenuItem("Tìm kiếm");
 	    mniTimKiemNhaCungCap.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
+	    		loaiQuanAo.setVisible(false);
 	    		datHangTruoc.setVisible(false);
 	    		nhaCungCap.setVisible(false);
 	    		thongKeDoanhThu.setVisible(false);
@@ -361,6 +372,7 @@ public class Main extends JFrame {
 	    mniCapNhatKhachHang.setIcon(new ImageIcon(Main.class.getResource("/Image/icon_CapNhat.png")));
 	    mniCapNhatKhachHang.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
+	    		loaiQuanAo.setVisible(false);
 	    		datHangTruoc.setVisible(false);
 	    		timKiemNhaCungCap.setVisible(false);
 	    		thongKeDoanhThu.setVisible(false);
@@ -386,6 +398,7 @@ public class Main extends JFrame {
 	    mniTimKiemKhachHang = new JMenuItem("Tìm kiếm");
 	    mniTimKiemKhachHang.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
+	    		loaiQuanAo.setVisible(false);
 	    		datHangTruoc.setVisible(false);
 	    		timKiemNhaCungCap.setVisible(false);
 	    		thongKeDoanhThu.setVisible(false);
@@ -412,6 +425,7 @@ public class Main extends JFrame {
 	    mniDatHangTruoc = new JMenuItem("Đặt hàng trước");
 	    mniDatHangTruoc.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
+	    		loaiQuanAo.setVisible(false);
 	    		timKiemKhachHang.setVisible(false);
 	    		timKiemNhaCungCap.setVisible(false);
 	    		thongKeDoanhThu.setVisible(false);
@@ -456,6 +470,7 @@ public class Main extends JFrame {
 	    mniCapNhatQuanAo.setIcon(new ImageIcon(Main.class.getResource("/Image/icon_CapNhat.png")));
 	    mniCapNhatQuanAo.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
+	    		loaiQuanAo.setVisible(false);
 	    		datHangTruoc.setVisible(false);
 	    		timKiemNhaCungCap.setVisible(false);
 	    		thongKeDoanhThu.setVisible(false);
@@ -481,6 +496,7 @@ public class Main extends JFrame {
 	    mniTimKiemQuanAo = new JMenuItem("Tìm kiếm ");
 	    mniTimKiemQuanAo.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
+	    		loaiQuanAo.setVisible(false);
 	    		datHangTruoc.setVisible(false);
 	    		timKiemNhaCungCap.setVisible(false);
 	    		thongKeDoanhThu.setVisible(false);
@@ -504,6 +520,33 @@ public class Main extends JFrame {
 	    mniTimKiemQuanAo.setIcon(new ImageIcon(Main.class.getResource("/Image/icon_TimKiem_nho.png")));
 	    mnQuanAo.add(mniTimKiemQuanAo);
 	    
+	    mniLoaiQuanAo = new JMenuItem("Loại quần áo");
+	    mniLoaiQuanAo.setIcon(new ImageIcon(Main.class.getResource("/Image/icon_LoaiQuanAo.png")));
+	    mniLoaiQuanAo.addActionListener(new ActionListener() {
+	    	public void actionPerformed(ActionEvent e) {
+	    		timKiemQuanAo.setVisible(false);
+	    		datHangTruoc.setVisible(false);
+	    		timKiemNhaCungCap.setVisible(false);
+	    		thongKeDoanhThu.setVisible(false);
+	    		danhSachHoaDon.setVisible(false);
+	    		timKiemKhachHang.setVisible(false);
+	    		timKiemNhanVien.setVisible(false);
+	    		lblHinhNen.setVisible(false);
+	    		nhaCungCap.setVisible(false);
+	    		capNhatQuanAo.setVisible(false);
+	    		capNhatNhanVien.setVisible(false);
+	    		banHang.setVisible(false);
+	    		capNhatKhachHang.setVisible(false);
+	    		
+        		pnlThongTin.add(new GUI_LoaiQuanAo());
+        		loaiQuanAo.setVisible(true);
+            	pnlThongTin.repaint();
+            	pnlThongTin.revalidate();
+	    	}
+	    });
+	    mniLoaiQuanAo.setFont(new Font("Arial", Font.PLAIN, 20));
+	    mnQuanAo.add(mniLoaiQuanAo);
+	    
 	    
 	    //Panel Hóa đơn
 	    pnlHoaDon = new JPanel();
@@ -525,6 +568,7 @@ public class Main extends JFrame {
 	    mniHoaDonBanHang.setIcon(new ImageIcon(Main.class.getResource("/Image/icon_HoaDonBanHang.png")));
 	    mniHoaDonBanHang.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
+	    		loaiQuanAo.setVisible(false);
 	    		datHangTruoc.setVisible(false);
 	    		timKiemNhaCungCap.setVisible(false);
 	    		thongKeDoanhThu.setVisible(false);
@@ -569,6 +613,7 @@ public class Main extends JFrame {
 	    mniDoanhThu.setFont(new Font("Arial", Font.PLAIN, 20));
 	    mniDoanhThu.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
+	    		loaiQuanAo.setVisible(false);
 	    		datHangTruoc.setVisible(false);
 	    		timKiemNhaCungCap.setVisible(false);
 	    		danhSachHoaDon.setVisible(false);

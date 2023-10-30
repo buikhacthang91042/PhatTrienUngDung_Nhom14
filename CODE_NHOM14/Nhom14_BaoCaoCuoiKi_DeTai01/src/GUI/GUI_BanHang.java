@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -14,6 +15,9 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+
+import connect.ConnectDB;
+
 import javax.swing.JComboBox;
 import java.awt.Cursor;
 import java.awt.Canvas;
@@ -31,7 +35,14 @@ public class GUI_BanHang extends JPanel {
 	private JTextField textField;
 
 	 public GUI_BanHang() {
-			  
+			  	
+		 		//ConnectDB
+		 		try {
+					ConnectDB.getInstance().connect();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 		    	setBackground(new Color(0, 64, 64));
 		    	setLayout(null);
 		    	
@@ -254,6 +265,12 @@ public class GUI_BanHang extends JPanel {
 				canvasDuongKe3.setBounds(0, 4, 478, 3);
 				panel.add(canvasDuongKe3);
 				canvasDuongKe3.setBackground(Color.BLACK);
+				
+				JLabel lblDonMuaQuanAo = new JLabel("Đơn mua quần áo");
+				lblDonMuaQuanAo.setForeground(Color.RED);
+				lblDonMuaQuanAo.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 16));
+				lblDonMuaQuanAo.setBounds(753, 10, 139, 33);
+				add(lblDonMuaQuanAo);
 				
 				
 		    	

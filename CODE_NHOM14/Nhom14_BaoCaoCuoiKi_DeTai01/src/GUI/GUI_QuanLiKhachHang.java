@@ -9,8 +9,12 @@ import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.JButton;
 import javax.swing.table.DefaultTableModel;
+
+import connect.ConnectDB;
+
 import javax.swing.JScrollPane;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
 public class GUI_QuanLiKhachHang extends JPanel {
@@ -23,12 +27,19 @@ public class GUI_QuanLiKhachHang extends JPanel {
 	private JTable tblThongTinKhachHang;
 	private JTextField textField;
 
-	/**
-	 * Create the panel.
-	 */
+	
 	public GUI_QuanLiKhachHang() {
 		setLayout(null);
 		setBackground(new Color(0, 64, 64));
+		
+		//ConnectDB
+ 		try {
+			ConnectDB.getInstance().connect();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		JLabel lblTieuDe = new JLabel("Quản lí khách hàng");
 		lblTieuDe.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 35));
 		lblTieuDe.setForeground(new Color(135, 206, 235));
