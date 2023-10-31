@@ -2,11 +2,16 @@ package entity;
 
 import java.util.Objects;
 
-public class Nhacungcap {
+public class NhaCungCap {
 	private String maNCC;
 	private String tenNCC;
 	private String diaChi;
-	private String sDT;
+	private int sDT;
+	
+	public NhaCungCap( String tenNCC) {
+		this.tenNCC = tenNCC;
+		
+	}
 	public String getMaNCC() {
 		return maNCC;
 	}
@@ -25,13 +30,13 @@ public class Nhacungcap {
 	public void setDiaChi(String diaChi) {
 		this.diaChi = diaChi;
 	}
-	public String getsDT() {
+	public int getsDT() {
 		return sDT;
 	}
-	public void setsDT(String sDT) {
+	public void setsDT(int sDT) {
 		this.sDT = sDT;
 	}
-	public Nhacungcap(String maNCC, String tenNCC, String diaChi, String sDT) {
+	public NhaCungCap(String maNCC, String tenNCC, String diaChi, int sDT) {
 		super();
 		this.maNCC = maNCC;
 		this.tenNCC = tenNCC;
@@ -50,7 +55,7 @@ public class Nhacungcap {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Nhacungcap other = (Nhacungcap) obj;
+		NhaCungCap other = (NhaCungCap) obj;
 		return Objects.equals(diaChi, other.diaChi) && Objects.equals(maNCC, other.maNCC)
 				&& Objects.equals(sDT, other.sDT) && Objects.equals(tenNCC, other.tenNCC);
 	}
@@ -58,7 +63,7 @@ public class Nhacungcap {
 	public String toString() {
 		return "Nhacungcap [maNCC=" + maNCC + ", tenNCC=" + tenNCC + ", diaChi=" + diaChi + ", sDT=" + sDT + "]";
 	}
-	public Nhacungcap() {
+	public NhaCungCap() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

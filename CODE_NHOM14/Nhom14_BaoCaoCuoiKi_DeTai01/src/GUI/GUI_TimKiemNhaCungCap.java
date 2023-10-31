@@ -15,11 +15,16 @@ import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 
+
+import DAO.DAO_NhaCungCap;
 import connect.ConnectDB;
+
+import entity.NhaCungCap;
 
 import javax.swing.DefaultComboBoxModel;
 
@@ -27,8 +32,9 @@ public class GUI_TimKiemNhaCungCap extends JPanel {
 	private JTextField txtTenNV;
 	private JTextField txtSdt;
 	private JTextField txtMaNV;
-
-	
+	private JComboBox cboMaNhaCungCap;
+	private DefaultTableModel modelTimKiemNhaCC;
+	private JTable tblNhaCC;
 	public GUI_TimKiemNhaCungCap() {
 		setBounds(new Rectangle(0, 0, 1308, 678));
 		setLayout(null);
@@ -94,29 +100,20 @@ public class GUI_TimKiemNhaCungCap extends JPanel {
 		btnNewButton.setBounds(673, 158, 180, 32);
 		pnForm.add(btnNewButton);
 		
-		JComboBox cboMaNhaCungCap = new JComboBox();
+		cboMaNhaCungCap = new JComboBox();
 		cboMaNhaCungCap.setBounds(673, 43, 85, 21);
 		pnForm.add(cboMaNhaCungCap);
 		
-		JScrollPane scrThongTinNhanVien = new JScrollPane();
-		scrThongTinNhanVien.setBounds(54, 341, 1195, 310);
-		add(scrThongTinNhanVien);
-		
-		JTable tblThongTinNhanVien = new JTable();
-		tblThongTinNhanVien.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		scrThongTinNhanVien.setViewportView(tblThongTinNhanVien);
-		tblThongTinNhanVien.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-			},
-			new String[] {
-				"Mã nhà cung cấp", "Tên nhà cung cấp", "Số điện thoại", "Địa chỉ"}
-		));
+			String[] tieude = {
+				"Mã nhà cung cấp", "Tên nhà cung cấp", "Số điện thoại", "Địa chỉ"};
+				
+		modelTimKiemNhaCC = new DefaultTableModel(tieude,0);
+		JScrollPane scrThongTinNhaCC = new JScrollPane();
+		scrThongTinNhaCC.setBounds(54, 341, 1195, 310);
+		add(scrThongTinNhaCC);
+			
+		scrThongTinNhaCC.setViewportView(tblNhaCC = new  JTable(modelTimKiemNhaCC));
+		scrThongTinNhaCC.setViewportView(tblNhaCC);
 		
 		JLabel lblTieuDe = new JLabel("Tìm kiếm nhà cung cấp");
 		lblTieuDe.setForeground(new Color(135, 206, 235));
@@ -129,6 +126,13 @@ public class GUI_TimKiemNhaCungCap extends JPanel {
 		lblTieuDeThongTin.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 20));
 		lblTieuDeThongTin.setBounds(51, 295, 245, 50);
 		add(lblTieuDeThongTin);
-
+		
+		updateComboMaNhaCungCap();
+	}
+	public void updateComboMaNhaCungCap() {
+		DAO_NhaCungCap dao = new DAO_NhaCungCap();
+		for(NhaCungCap loai : dao.getAllNhaCungCap()) {
+			cboMaNhaCungCap.addItem(loai.getMaNCC());
+		}
 	}
 }

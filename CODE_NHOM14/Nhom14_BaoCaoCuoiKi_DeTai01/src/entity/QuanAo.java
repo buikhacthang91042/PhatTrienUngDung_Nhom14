@@ -5,7 +5,8 @@ package entity;
 public class QuanAo {
 	private String maQuanAo;
 	private String tenQuanAo;
-	private Nhacungcap tenNCC;
+	private NhaCungCap tenNCC;
+	private LoaiQuanAo loaiQuanAo;
 	private String kinhThuoc;
 	private int soLuongTon;
 	private float gia;
@@ -15,20 +16,42 @@ public class QuanAo {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	@Override
-	public String toString() {
-		return "QuanAo [maQuanAo=" + maQuanAo + ", tenQuanAo=" + tenQuanAo + ", tenNCC=" + tenNCC + ", kinhThuoc="
-				+ kinhThuoc + ", soLuongTon=" + soLuongTon + ", gia=" + gia + "]";
+	public QuanAo(String maQuanAo) {
+		
+		this.maQuanAo = maQuanAo;
+		
 	}
-	public QuanAo(String maQuanAo, String tenQuanAo, Nhacungcap tenNCC, String kinhThuoc, int soLuongTon, float gia) {
+	
+	public QuanAo(String maQuanAo, String tenQuanAo, NhaCungCap tenNCC, LoaiQuanAo loaiQuanAo, String kinhThuoc,
+			int soLuongTon, float gia) {
 		super();
 		this.maQuanAo = maQuanAo;
 		this.tenQuanAo = tenQuanAo;
 		this.tenNCC = tenNCC;
+		this.loaiQuanAo = loaiQuanAo;
 		this.kinhThuoc = kinhThuoc;
 		this.soLuongTon = soLuongTon;
 		this.gia = gia;
 	}
+
+
+	@Override
+	public String toString() {
+		return "QuanAo [maQuanAo=" + maQuanAo + ", tenQuanAo=" + tenQuanAo + ", tenNCC=" + tenNCC + ", loaiQuanAo="
+				+ loaiQuanAo + ", kinhThuoc=" + kinhThuoc + ", soLuongTon=" + soLuongTon + ", gia=" + gia + "]";
+	}
+
+
+	public LoaiQuanAo getLoaiQuanAo() {
+		return loaiQuanAo;
+	}
+
+
+	public void setLoaiQuanAo(LoaiQuanAo loaiQuanAo) {
+		this.loaiQuanAo = loaiQuanAo;
+	}
+
+
 	public String getMaQuanAo() {
 		return maQuanAo;
 	}
@@ -41,10 +64,10 @@ public class QuanAo {
 	public void setTenQuanAo(String tenQuanAo) {
 		this.tenQuanAo = tenQuanAo;
 	}
-	public Nhacungcap getTenNCC() {
+	public NhaCungCap getTenNCC() {
 		return tenNCC;
 	}
-	public void setTenNCC(Nhacungcap tenNCC) {
+	public void setTenNCC(NhaCungCap tenNCC) {
 		this.tenNCC = tenNCC;
 	}
 	public String getKinhThuoc() {

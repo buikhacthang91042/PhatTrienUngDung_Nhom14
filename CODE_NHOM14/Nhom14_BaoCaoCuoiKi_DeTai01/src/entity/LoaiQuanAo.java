@@ -5,6 +5,12 @@ import java.util.Objects;
 public class LoaiQuanAo {
 	private String maLoai;
 	private String tenLoai;
+	
+	
+	public LoaiQuanAo(String tenLoai) {
+		this.tenLoai = tenLoai;
+		
+	}
 	public LoaiQuanAo(String maLoai, String tenLoai) {
 		super();
 		this.maLoai = maLoai;

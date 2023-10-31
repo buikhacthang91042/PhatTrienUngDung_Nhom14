@@ -3,8 +3,6 @@
     <fullyQualifiedTypeName name="java.awt.Font"/>
     <fullyQualifiedTypeName name="GUI.Panel2"/>
     <fullyQualifiedTypeName name="GUI.GUI_QuanLyNhanVien"/>
-    <fullyQualifiedTypeName name="javax.swing.JTable"/>
-    <fullyQualifiedTypeName name="javax.swing.table.DefaultTableModel"/>
     <fullyQualifiedTypeName name="javax.swing.JScrollPane"/>
     <fullyQualifiedTypeName name="GUI.GUI_TimKiemSanPham"/>
     <fullyQualifiedTypeName name="GUI.GUI_DatHang"/>
@@ -19,4 +17,26 @@
     <fullyQualifiedTypeName name="entity.Nhacungcap"/>
     <fullyQualifiedTypeName name="GUI.GUI_LoaiQuanAo"/>
     <fullyQualifiedTypeName name="connect.ConnectDB"/>
+    <fullyQualifiedTypeName name="java.sql.Statement"/>
+    <fullyQualifiedTypeName name="java.sql.ResultSet"/>
+    <fullyQualifiedTypeName name="java.sql.SQLException"/>
+    <fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
+    <fullyQualifiedTypeName name="java.awt.event.MouseListener"/>
+    <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="java.sql.Connection"/>
+    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+    <fullyQualifiedTypeName name="java.lang.StringBuilder"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="entity.QuanAo"/>
+    <fullyQualifiedTypeName name="entity.NhaCungCap"/>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
+    <fullyQualifiedTypeName name="entity.LoaiQuanAo"/>
+    <fullyQualifiedTypeName name="DAO.DAO_QuanAo"/>
+    <fullyQualifiedTypeName name="javax.swing.table.DefaultTableModel"/>
+    <fullyQualifiedTypeName name="javax.swing.JTable"/>
+    <fullyQualifiedTypeName name="DAO.DAO_LoaiQuanAo"/>
+    <fullyQualifiedTypeName name="java.util.Random"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="DAO.DAO_NhaCungCap"/>
 </qualifiedTypeNameHistroy>

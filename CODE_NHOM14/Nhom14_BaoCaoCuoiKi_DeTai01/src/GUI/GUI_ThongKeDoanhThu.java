@@ -2,7 +2,11 @@ package GUI;
 
 import javax.swing.JPanel;
 
+import DAO.DAO_LoaiQuanAo;
+import DAO.DAO_NhaCungCap;
 import connect.ConnectDB;
+import entity.LoaiQuanAo;
+import entity.NhaCungCap;
 
 import java.awt.Rectangle;
 import java.awt.SystemColor;
@@ -16,7 +20,7 @@ import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
 public class GUI_ThongKeDoanhThu extends JPanel {
-
+	JComboBox cboLoaiQuanAo,cboNhaCungCap;
 
 	public GUI_ThongKeDoanhThu() {
 		setBackground(new Color(0, 64, 64));
@@ -72,20 +76,20 @@ public class GUI_ThongKeDoanhThu extends JPanel {
 		lblLoaiQuanAo.setBounds(773, 34, 223, 32);
 		pnForm.add(lblLoaiQuanAo);
 		
-		JComboBox comboBox_3 = new JComboBox();
-		comboBox_3.setFont(new Font("Tahoma", Font.PLAIN, 22));
-		comboBox_3.setBounds(1003, 31, 225, 32);
-		pnForm.add(comboBox_3);
+		cboLoaiQuanAo = new JComboBox();
+		cboLoaiQuanAo.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		cboLoaiQuanAo.setBounds(1003, 31, 225, 32);
+		pnForm.add(cboLoaiQuanAo);
 		
 		JLabel lblHangQuanAo = new JLabel("Hãng quần áo");
 		lblHangQuanAo.setFont(new Font("Tahoma", Font.BOLD, 22));
 		lblHangQuanAo.setBounds(773, 94, 225, 32);
 		pnForm.add(lblHangQuanAo);
 		
-		JComboBox comboBox_4 = new JComboBox();
-		comboBox_4.setFont(new Font("Tahoma", Font.PLAIN, 22));
-		comboBox_4.setBounds(1003, 91, 225, 32);
-		pnForm.add(comboBox_4);
+		cboNhaCungCap = new JComboBox();
+		cboNhaCungCap.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		cboNhaCungCap.setBounds(1003, 91, 225, 32);
+		pnForm.add(cboNhaCungCap);
 		
 		JButton btnTmKim = new JButton("THỐNG KÊ");
 		btnTmKim.addActionListener(new ActionListener() {
@@ -139,7 +143,21 @@ public class GUI_ThongKeDoanhThu extends JPanel {
 		lblLoiNhuan.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		lblLoiNhuan.setBounds(1100, 90, 140, 30);
 		pnSoLieu.add(lblLoiNhuan);
-
+		
+		updateComboLoaiQuanAo();
+		updateComboNhaCungCap();
 	}
-
+	 public void updateComboLoaiQuanAo() {
+			DAO_LoaiQuanAo dao = new DAO_LoaiQuanAo();
+			for(LoaiQuanAo loai : dao.getAllLoaiQuanAo()) {
+				cboLoaiQuanAo.addItem(loai.getTenLoai());
+			}
+		}
+		
+		public void updateComboNhaCungCap() {
+			DAO_NhaCungCap dao = new DAO_NhaCungCap();
+			for(NhaCungCap loai : dao.getAllNhaCungCap()) {
+				cboNhaCungCap.addItem(loai.getTenNCC());
+			}
+		}
 }

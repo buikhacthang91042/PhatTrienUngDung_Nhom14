@@ -6,6 +6,7 @@ import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -16,14 +17,23 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
+import DAO.DAO_LoaiQuanAo;
+import DAO.DAO_NhaCungCap;
+import DAO.DAO_QuanAo;
 import connect.ConnectDB;
+import entity.LoaiQuanAo;
+import entity.NhaCungCap;
+import entity.QuanAo;
 
 import javax.swing.JComboBox;
 import java.awt.Cursor;
 import java.awt.Canvas;
+import javax.swing.DefaultComboBoxModel;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class GUI_BanHang extends JPanel {
-	private JTextField txtMaNhanVien;
+	private JTextField txtTenQuanAo;
 	private JTextField txtMaQuanAo;
 	private DefaultTableModel modelThongTinPhieuDat, modelDsQuanAo;
 	private JTable tblThongTinDonHang;
@@ -33,7 +43,8 @@ public class GUI_BanHang extends JPanel {
 	private JTextField txtSoDienThoai;
 	private JTextField txtNhapSoDienThoai;
 	private JTextField textField;
-
+	private JComboBox cboNhaCungCap,cboKichThuoc,cboLoaiQuanAo;
+	private JTextField txtDiaChi;
 	 public GUI_BanHang() {
 			  	
 		 		//ConnectDB
@@ -62,10 +73,10 @@ public class GUI_BanHang extends JPanel {
 		    	lblMaQuanAo.setBounds(10, 55, 136, 38);
 		    	pnlTimKiemQuanAo.add(lblMaQuanAo);
 		    	
-		    	txtMaNhanVien = new JTextField();
-		    	txtMaNhanVien.setBounds(161, 12, 124, 24);
-		    	pnlTimKiemQuanAo.add(txtMaNhanVien);
-		    	txtMaNhanVien.setColumns(10);
+		    	txtTenQuanAo = new JTextField();
+		    	txtTenQuanAo.setBounds(161, 12, 124, 24);
+		    	pnlTimKiemQuanAo.add(txtTenQuanAo);
+		    	txtTenQuanAo.setColumns(10);
 		    	
 		    	txtMaQuanAo = new JTextField();
 		    	txtMaQuanAo.setColumns(10);
@@ -82,15 +93,16 @@ public class GUI_BanHang extends JPanel {
 		    	lblNhaCungCap.setBounds(400, 8, 136, 24);
 		    	pnlTimKiemQuanAo.add(lblNhaCungCap);
 		    	
-		    	JComboBox cboNhaCungCap = new JComboBox();
+		    	 cboNhaCungCap = new JComboBox();
 		    	cboNhaCungCap.setBounds(555, 13, 124, 21);
 		    	pnlTimKiemQuanAo.add(cboNhaCungCap);
 		    	
-		    	JComboBox cboKichThuoc = new JComboBox();
+		    	cboKichThuoc = new JComboBox();
+		    	cboKichThuoc.setModel(new DefaultComboBoxModel(new String[] {"S", "M", "L", "XL", "2XL"}));
 		    	cboKichThuoc.setBounds(164, 108, 121, 21);
 		    	pnlTimKiemQuanAo.add(cboKichThuoc);
 		    	
-		    	JComboBox cboLoaiQuanAo = new JComboBox();
+		    	cboLoaiQuanAo = new JComboBox();
 		    	cboLoaiQuanAo.setBounds(555, 65, 124, 21);
 		    	pnlTimKiemQuanAo.add(cboLoaiQuanAo);
 		    	
@@ -116,8 +128,7 @@ public class GUI_BanHang extends JPanel {
 				
 				
 				
-				String [] tieude={"Tên quần áo","Số lượng","Loại quần áo","Kích thước"
-						 ,"Giá"};
+				String [] tieude={"Mã quần áo", "Tên quần áo ", "Loại quần áo", "Kích thước", "Số lượng","Giá"};
 				modelThongTinPhieuDat = new DefaultTableModel(tieude,0);
 				
 				JScrollPane scrThongTinDonHang = new JScrollPane();
@@ -144,10 +155,21 @@ public class GUI_BanHang extends JPanel {
 				scrDsQuanAo.setBounds(10, 239, 700, 224);
 				add(scrDsQuanAo);
 				
-				String [] tieuDeDsQuanAo={"Mã quần áo","Tên quần áo","Số lượng tồn"
-						 ,"Tên nhà cung cấp","Loại quần áo","Kích thước","Giá"};
+				String [] tieuDeDsQuanAo={"Mã quần áo", "Tên quần áo ", "Tên nhà cung cấp", "Loại quần áo", "Kích thước", "Số lượng tồn","Giá"};
 				modelDsQuanAo = new DefaultTableModel(tieuDeDsQuanAo,0);
 				scrDsQuanAo.setViewportView(tblDsQuanAo = new  JTable(modelDsQuanAo));
+				tblDsQuanAo.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						 int row = tblDsQuanAo.getSelectedRow();
+						  txtMaQuanAo.setText(tblDsQuanAo.getValueAt(row, 0).toString());
+						  txtTenQuanAo.setText(tblDsQuanAo.getValueAt(row, 1).toString());
+						  cboNhaCungCap.setSelectedItem(tblDsQuanAo.getValueAt(row, 2).toString());
+						  cboLoaiQuanAo.setSelectedItem(tblDsQuanAo.getValueAt(row, 3).toString());
+						  cboKichThuoc.setSelectedItem(tblDsQuanAo.getValueAt(row, 4).toString());
+						  
+					}
+				});
 				scrDsQuanAo.setViewportView(tblDsQuanAo);
 				
 				JLabel lblSoLuong = new JLabel("Số lượng");
@@ -179,92 +201,102 @@ public class GUI_BanHang extends JPanel {
 				lblThanhToan.setBounds(10, 510, 173, 33);
 				add(lblThanhToan);
 				
-				JPanel panel = new JPanel();
-				panel.setBounds(0, 539, 1265, 172);
-				add(panel);
-				panel.setLayout(null);
+				JPanel pnlThanhToan = new JPanel();
+				pnlThanhToan.setBounds(0, 539, 1265, 172);
+				add(pnlThanhToan);
+				pnlThanhToan.setLayout(null);
 				
 				JLabel lblTenKhachHang = new JLabel("Tên khách hàng");
 				lblTenKhachHang.setFont(new Font("Arial", Font.BOLD, 20));
 				lblTenKhachHang.setBounds(21, 66, 159, 24);
-				panel.add(lblTenKhachHang);
+				pnlThanhToan.add(lblTenKhachHang);
 				
 				txtTenKhachHang = new JTextField();
 				txtTenKhachHang.setColumns(10);
 				txtTenKhachHang.setBounds(212, 70, 159, 24);
-				panel.add(txtTenKhachHang);
+				pnlThanhToan.add(txtTenKhachHang);
 				
 				JLabel lblSoDienThoai = new JLabel("Số điện thoại");
 				lblSoDienThoai.setFont(new Font("Arial", Font.BOLD, 20));
 				lblSoDienThoai.setBounds(21, 100, 159, 24);
-				panel.add(lblSoDienThoai);
+				pnlThanhToan.add(lblSoDienThoai);
 				
 				txtSoDienThoai = new JTextField();
 				txtSoDienThoai.setColumns(10);
 				txtSoDienThoai.setBounds(212, 104, 159, 24);
-				panel.add(txtSoDienThoai);
+				pnlThanhToan.add(txtSoDienThoai);
 				
 				JLabel lblTimTheoSoDienThoai = new JLabel("Nhập số điện thoại để tìm");
 				lblTimTheoSoDienThoai.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 16));
 				lblTimTheoSoDienThoai.setBounds(10, 17, 204, 24);
-				panel.add(lblTimTheoSoDienThoai);
+				pnlThanhToan.add(lblTimTheoSoDienThoai);
 				
 				txtNhapSoDienThoai = new JTextField();
 				txtNhapSoDienThoai.setColumns(10);
 				txtNhapSoDienThoai.setBounds(212, 17, 159, 24);
-				panel.add(txtNhapSoDienThoai);
+				pnlThanhToan.add(txtNhapSoDienThoai);
 				
 				JLabel label = new JLabel("New label");
 				label.setBounds(590, 18, -630, -64);
-				panel.add(label);
+				pnlThanhToan.add(label);
 				
 				JLabel lblThanhTien = new JLabel("Thành tiền");
 				lblThanhTien.setForeground(Color.RED);
 				lblThanhTien.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 20));
 				lblThanhTien.setBounds(786, 1, 112, 40);
-				panel.add(lblThanhTien);
+				pnlThanhToan.add(lblThanhTien);
 				
 				textField = new JTextField();
 				textField.setBounds(900, 9, 159, 31);
-				panel.add(textField);
+				pnlThanhToan.add(textField);
 				textField.setColumns(10);
 				
 				JButton btnThanhToan = new JButton("Thanh toán");
 				btnThanhToan.setBackground(new Color(255, 0, 0));
 				btnThanhToan.setFont(new Font("Arial", Font.BOLD, 20));
 				btnThanhToan.setBounds(860, 80, 159, 44);
-				panel.add(btnThanhToan);
+				pnlThanhToan.add(btnThanhToan);
 				
 				JButton btnTimQuanAo_1 = new JButton("TÌM");
 				btnTimQuanAo_1.setFont(new Font("Arial", Font.BOLD, 20));
 				btnTimQuanAo_1.setBounds(381, 14, 78, 28);
-				panel.add(btnTimQuanAo_1);
+				pnlThanhToan.add(btnTimQuanAo_1);
 				
 				JButton btnDatHang = new JButton("Đặt hàng");
 				btnDatHang.setBackground(new Color(255, 128, 0));
 				btnDatHang.setFont(new Font("Arial", Font.BOLD, 20));
 				btnDatHang.setBounds(1040, 80, 185, 44);
-				panel.add(btnDatHang);
+				pnlThanhToan.add(btnDatHang);
 				
 				Canvas canvasDuongKe1 = new Canvas();
 				canvasDuongKe1.setBackground(new Color(0, 0, 0));
 				canvasDuongKe1.setBounds(0, 46, 480, 3);
-				panel.add(canvasDuongKe1);
+				pnlThanhToan.add(canvasDuongKe1);
 				
 				Canvas canvasDuongKe1_1 = new Canvas();
 				canvasDuongKe1_1.setBackground(Color.BLACK);
 				canvasDuongKe1_1.setBounds(477, 5, 3, 42);
-				panel.add(canvasDuongKe1_1);
+				pnlThanhToan.add(canvasDuongKe1_1);
 				
 				Canvas canvasDuongKe4 = new Canvas();
 				canvasDuongKe4.setBackground(Color.BLACK);
 				canvasDuongKe4.setBounds(0, 5, 3, 42);
-				panel.add(canvasDuongKe4);
+				pnlThanhToan.add(canvasDuongKe4);
 				
 				Canvas canvasDuongKe3 = new Canvas();
 				canvasDuongKe3.setBounds(0, 4, 478, 3);
-				panel.add(canvasDuongKe3);
+				pnlThanhToan.add(canvasDuongKe3);
 				canvasDuongKe3.setBackground(Color.BLACK);
+				
+				JLabel lblDiaChi = new JLabel("Địa chỉ");
+				lblDiaChi.setFont(new Font("Arial", Font.BOLD, 20));
+				lblDiaChi.setBounds(21, 138, 159, 24);
+				pnlThanhToan.add(lblDiaChi);
+				
+				txtDiaChi = new JTextField();
+				txtDiaChi.setColumns(10);
+				txtDiaChi.setBounds(212, 138, 159, 24);
+				pnlThanhToan.add(txtDiaChi);
 				
 				JLabel lblDonMuaQuanAo = new JLabel("Đơn mua quần áo");
 				lblDonMuaQuanAo.setForeground(Color.RED);
@@ -272,9 +304,32 @@ public class GUI_BanHang extends JPanel {
 				lblDonMuaQuanAo.setBounds(753, 10, 139, 33);
 				add(lblDonMuaQuanAo);
 				
-				
-		    	
+				updateDSQuanAo();
+				updateComboLoaiQuanAo();
+		    	updateComboNhaCungCap();
 		    	setVisible(true);
 		    	
 }
+	 public void updateDSQuanAo() {
+			DAO_QuanAo dao= new DAO_QuanAo();
+			List<QuanAo> list = dao.getAllQuanAo();
+			for(QuanAo quanAo : list) {
+				Object [] data = {quanAo.getMaQuanAo(),quanAo.getTenQuanAo(),quanAo.getTenNCC().getTenNCC(),quanAo.getLoaiQuanAo().getTenLoai(),quanAo.getKinhThuoc(),quanAo.getSoLuongTon(),quanAo.getGia()};
+				modelDsQuanAo.addRow(data);
+			}
+			
+		}
+	 public void updateComboLoaiQuanAo() {
+			DAO_LoaiQuanAo dao = new DAO_LoaiQuanAo();
+			for(LoaiQuanAo loai : dao.getAllLoaiQuanAo()) {
+				cboLoaiQuanAo.addItem(loai.getTenLoai());
+			}
+		}
+		
+		public void updateComboNhaCungCap() {
+			DAO_NhaCungCap dao = new DAO_NhaCungCap();
+			for(NhaCungCap loai : dao.getAllNhaCungCap()) {
+				cboNhaCungCap.addItem(loai.getTenNCC());
+			}
+		}
 }

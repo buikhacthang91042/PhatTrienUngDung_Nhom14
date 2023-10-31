@@ -2,6 +2,8 @@ package GUI;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
@@ -10,12 +12,22 @@ import java.awt.Color;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import DAO.DAO_LoaiQuanAo;
+import DAO.DAO_NhaCungCap;
+import DAO.DAO_QuanAo;
 import connect.ConnectDB;
+import entity.LoaiQuanAo;
+import entity.NhaCungCap;
+import entity.QuanAo;
 
 import javax.swing.JScrollPane;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.sql.SQLException;
+import java.util.List;
+import java.util.Random;
 import java.awt.event.ActionEvent;
 import javax.swing.DefaultComboBoxModel;
 
@@ -25,10 +37,13 @@ public class GUI_CapNhatQuanAo extends JPanel {
 	private JTextField txtTenquanao;
 	private JTextField txtDongia;
 	private JTextField txtSoluong;
-	private JTable table;
+	private JTable tblQuanAo;
 	private JTextField txtTiemkiem;
-
-	
+	private JComboBox cboLoaiQuanAo, cboNCC,cboKichco;
+	private JTextField txtMaQuanAo;
+	private DefaultTableModel modelThongTinQuanAo;
+	private String ma;
+	private List<QuanAo> list;
 	public GUI_CapNhatQuanAo() {
 		setLayout(null);
 		setBackground(new Color(0, 64, 64));
@@ -46,54 +61,72 @@ public class GUI_CapNhatQuanAo extends JPanel {
 			e.printStackTrace();
 		}
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(75, 408, 1139, 249);
-		add(scrollPane);
-		
-		table = new JTable();
-		scrollPane.setViewportView(table);
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-			},
-			new String[] {
-				"Tên quàn áo", "Giá ", "Số lượng", "Loại sản phẩm", "Kích thước", "Nhà cung cấp"
-			}
-		));
+				
+		 String[] tieude = {
+				"Mã quần áo", "Tên quần áo ", "Tên nhà cung cấp", "Loại quần áo", "Kích thước", "Số lượng tồn","Giá"
+		};
+		modelThongTinQuanAo = new DefaultTableModel(tieude,0);
+		JScrollPane scrThongTinQuanAo = new JScrollPane();
+		scrThongTinQuanAo.setBounds(69, 425, 1139, 249);
+		add(scrThongTinQuanAo);
+			
+		scrThongTinQuanAo.setViewportView(tblQuanAo = new  JTable(modelThongTinQuanAo));
+		scrThongTinQuanAo.setViewportView(tblQuanAo);
+		tblQuanAo.addMouseListener(new MouseAdapter() {
+	 		@Override
+	 		public void mouseClicked(MouseEvent e) {
+							
+				  int row = tblQuanAo.getSelectedRow();
+				  txtMaQuanAo.setText(tblQuanAo.getValueAt(row, 0).toString());
+				  txtTenquanao.setText(tblQuanAo.getValueAt(row, 1).toString());
+				  cboNCC.setSelectedItem(tblQuanAo.getValueAt(row, 2).toString());
+				  cboLoaiQuanAo.setSelectedItem(tblQuanAo.getValueAt(row, 3).toString());
+				  cboKichco.setSelectedItem(tblQuanAo.getValueAt(row, 4).toString());
+				  txtSoluong.setText(tblQuanAo.getValueAt(row, 5).toString());
+				  txtDongia.setText(tblQuanAo.getValueAt(row, 6).toString());
+				 
+	 			}
+	 		});
 		
 		JPanel pnlThongTinQuanAo = new JPanel();
-		pnlThongTinQuanAo.setBounds(167, 57, 979, 311);
+		pnlThongTinQuanAo.setBounds(167, 57, 979, 323);
 		add(pnlThongTinQuanAo);
 		pnlThongTinQuanAo.setLayout(null);
 		
-		JLabel lblTenquanao = new JLabel("Tên quần áo ");
-		lblTenquanao.setBounds(54, 75, 118, 25);
-		pnlThongTinQuanAo.add(lblTenquanao);
-		lblTenquanao.setFont(new Font("Tahoma", Font.ITALIC, 20));
+		JLabel lblTMaquanao = new JLabel("Mã quần áo ");
+		lblTMaquanao.setBounds(10, 75, 118, 25);
+		pnlThongTinQuanAo.add(lblTMaquanao);
+		lblTMaquanao.setFont(new Font("Tahoma", Font.ITALIC, 20));
+		
+		txtMaQuanAo = new JTextField();
+		txtMaQuanAo.setColumns(10);
+		txtMaQuanAo.setBounds(145, 63, 216, 37);
+		txtMaQuanAo.setEditable(false);
+		txtMaQuanAo.setText(taoMa());
+		pnlThongTinQuanAo.add(txtMaQuanAo);
 		
 		txtTenquanao = new JTextField();
-		txtTenquanao.setBounds(206, 73, 216, 37);
+		txtTenquanao.setBounds(145, 134, 216, 37);
 		pnlThongTinQuanAo.add(txtTenquanao);
 		txtTenquanao.setColumns(10);
 		
 		JLabel lblDongia = new JLabel("Giá");
-		lblDongia.setBounds(54, 130, 82, 37);
+		lblDongia.setBounds(10, 197, 82, 37);
 		pnlThongTinQuanAo.add(lblDongia);
 		lblDongia.setFont(new Font("Tahoma", Font.ITALIC, 20));
 		
 		txtDongia = new JTextField();
-		txtDongia.setBounds(206, 134, 216, 37);
+		txtDongia.setBounds(145, 201, 216, 37);
 		pnlThongTinQuanAo.add(txtDongia);
 		txtDongia.setColumns(10);
 		
 		JLabel lblSoluong = new JLabel("Số lượng ");
-		lblSoluong.setBounds(41, 191, 90, 37);
+		lblSoluong.setBounds(10, 264, 90, 37);
 		pnlThongTinQuanAo.add(lblSoluong);
 		lblSoluong.setFont(new Font("Tahoma", Font.ITALIC, 20));
 		
 		txtSoluong = new JTextField();
-		txtSoluong.setBounds(206, 191, 216, 37);
+		txtSoluong.setBounds(145, 268, 216, 37);
 		pnlThongTinQuanAo.add(txtSoluong);
 		txtSoluong.setColumns(10);
 		
@@ -102,37 +135,48 @@ public class GUI_CapNhatQuanAo extends JPanel {
 		pnlThongTinQuanAo.add(lblDanhmuc);
 		lblDanhmuc.setFont(new Font("Tahoma", Font.ITALIC, 20));
 		
-		JComboBox cmbDanhmuc = new JComboBox();
-		cmbDanhmuc.setBounds(733, 75, 170, 33);
-		pnlThongTinQuanAo.add(cmbDanhmuc);
+		cboLoaiQuanAo = new JComboBox();
+		cboLoaiQuanAo.setBounds(733, 75, 170, 33);
+		pnlThongTinQuanAo.add(cboLoaiQuanAo);
 		
 		JLabel lblKichco = new JLabel("Kích thước");
 		lblKichco.setBounds(575, 130, 124, 37);
 		pnlThongTinQuanAo.add(lblKichco);
 		lblKichco.setFont(new Font("Tahoma", Font.ITALIC, 20));
 		
-		JComboBox cmbKichco = new JComboBox();
-		cmbKichco.setModel(new DefaultComboBoxModel(new String[] {"S", "M", "L", "XL", "2XL"}));
-		cmbKichco.setBounds(733, 130, 170, 33);
-		pnlThongTinQuanAo.add(cmbKichco);
+		cboKichco = new JComboBox();
+		cboKichco.setModel(new DefaultComboBoxModel(new String[] {"S", "M", "L", "XL", "2XL"}));
+		cboKichco.setBounds(733, 130, 170, 33);
+		pnlThongTinQuanAo.add(cboKichco);
 		
 		JLabel lblNCC = new JLabel("Nhà cung cấp");
 		lblNCC.setBounds(575, 191, 141, 37);
 		pnlThongTinQuanAo.add(lblNCC);
 		lblNCC.setFont(new Font("Tahoma", Font.ITALIC, 20));
 		
-		JComboBox cmbNCC = new JComboBox();
-		cmbNCC.setBounds(733, 197, 170, 33);
-		pnlThongTinQuanAo.add(cmbNCC);
+		cboNCC = new JComboBox();
+		cboNCC.setBounds(733, 197, 170, 33);
+		pnlThongTinQuanAo.add(cboNCC);
 		
 		JButton btnThem = new JButton("THÊM");
-		btnThem.setBounds(175, 264, 113, 37);
+		btnThem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				txtMaQuanAo.setText(taoMa());
+				themQuanAo();
+			}
+		});
+		btnThem.setBounds(418, 264, 113, 37);
 		pnlThongTinQuanAo.add(btnThem);
 		btnThem.setForeground(new Color(60, 179, 113));
 		btnThem.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		
 		JButton btnXoa = new JButton("XÓA");
-		btnXoa.setBounds(322, 264, 113, 37);
+		btnXoa.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				xoaQuanAo();
+			}
+		});
+		btnXoa.setBounds(541, 264, 113, 37);
 		pnlThongTinQuanAo.add(btnXoa);
 		btnXoa.setForeground(new Color(60, 179, 113));
 		btnXoa.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -140,23 +184,29 @@ public class GUI_CapNhatQuanAo extends JPanel {
 		JButton btnSua = new JButton("SỬA");
 		btnSua.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				suaQuanAo();
 			}
 		});
-		btnSua.setBounds(475, 264, 113, 37);
+		btnSua.setBounds(680, 264, 113, 37);
 		pnlThongTinQuanAo.add(btnSua);
 		btnSua.setForeground(new Color(60, 179, 113));
 		btnSua.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		
 		JButton btnXoatrang = new JButton("XÓA TRẮNG");
-		btnXoatrang.setBounds(628, 264, 152, 37);
+		btnXoatrang.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				xoaTrang();
+			}
+		});
+		btnXoatrang.setBounds(817, 264, 152, 37);
 		pnlThongTinQuanAo.add(btnXoatrang);
 		btnXoatrang.setForeground(new Color(60, 179, 113));
 		btnXoatrang.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		
-		JLabel lblTimkiemquanao = new JLabel("Tìm kiếm quần áo");
-		lblTimkiemquanao.setBounds(230, 21, 188, 25);
-		pnlThongTinQuanAo.add(lblTimkiemquanao);
-		lblTimkiemquanao.setFont(new Font("Tahoma", Font.BOLD, 20));
+		JLabel lblTimKiemQuanAo = new JLabel("Tìm kiếm theo tên");
+		lblTimKiemQuanAo.setBounds(230, 21, 188, 25);
+		pnlThongTinQuanAo.add(lblTimKiemQuanAo);
+		lblTimKiemQuanAo.setFont(new Font("Tahoma", Font.BOLD, 20));
 		
 		txtTiemkiem = new JTextField();
 		txtTiemkiem.setBounds(417, 19, 204, 33);
@@ -164,17 +214,152 @@ public class GUI_CapNhatQuanAo extends JPanel {
 		txtTiemkiem.setColumns(10);
 		
 		JButton btnTimkiem = new JButton("");
+		btnTimkiem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				timKiemQuanAo();
+			}
+		});
 		btnTimkiem.setSelectedIcon(new ImageIcon(GUI_CapNhatQuanAo.class.getResource("/Image/icon_TimKiem.png")));
 		btnTimkiem.setBounds(632, 18, 46, 33);
 		pnlThongTinQuanAo.add(btnTimkiem);
 		btnTimkiem.setIcon(new ImageIcon(GUI_CapNhatQuanAo.class.getResource("/Image/icon_TimKiem.png")));
 		
+		JLabel lblTenquanao_1 = new JLabel("Tên quần áo ");
+		lblTenquanao_1.setFont(new Font("Tahoma", Font.ITALIC, 20));
+		lblTenquanao_1.setBounds(10, 136, 118, 25);
+		pnlThongTinQuanAo.add(lblTenquanao_1);
+		
+	
+		
 		JLabel lblDanhSchQun = new JLabel("Danh sách quần áo");
 		lblDanhSchQun.setForeground(new Color(135, 206, 235));
 		lblDanhSchQun.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 20));
-		lblDanhSchQun.setBounds(75, 378, 199, 37);
+		lblDanhSchQun.setBounds(69, 393, 199, 37);
 		add(lblDanhSchQun);
+		updateComboLoaiQuanAo();
+		updateComboNhaCungCap();
+		updateData();
+	}
+	public void updateComboLoaiQuanAo() {
+		DAO_LoaiQuanAo dao = new DAO_LoaiQuanAo();
+		for(LoaiQuanAo loai : dao.getAllLoaiQuanAo()) {
+			cboLoaiQuanAo.addItem(loai.getTenLoai());
+		}
+	}
+	
+	public void updateComboNhaCungCap() {
+		DAO_NhaCungCap dao = new DAO_NhaCungCap();
+		for(NhaCungCap loai : dao.getAllNhaCungCap()) {
+			cboNCC.addItem(loai.getTenNCC());
+		}
+	}
+	
+	public void themQuanAo() {
+		DAO_QuanAo dao = new DAO_QuanAo();
+		String maQuanAo = txtMaQuanAo.getText().trim();
+		String tenQuanAo = txtTenquanao.getText().trim();
+		String tenNhaCC = cboNCC.getSelectedItem().toString();
+		String loaiQuanAo = cboLoaiQuanAo.getSelectedItem().toString();
+		String kichThuoc = cboKichco.getSelectedItem().toString();
+		String soLuongTon = txtSoluong.getText().trim();
+		String gia = txtDongia.getText().trim();
+		
+		QuanAo quanAo = new QuanAo(maQuanAo,tenQuanAo,new NhaCungCap(tenNhaCC),new LoaiQuanAo(loaiQuanAo) ,kichThuoc,Integer.parseInt(soLuongTon) ,Float.parseFloat(gia)); 
+		if(dao.create(quanAo)) {
+			String [] data = {maQuanAo,tenQuanAo,tenNhaCC,loaiQuanAo,kichThuoc,soLuongTon,gia};
+			modelThongTinQuanAo.addRow(data);
+		}
+	}
+	
+	public void updateData() {
+		DAO_QuanAo dao= new DAO_QuanAo();
+		List<QuanAo> list = dao.getAllQuanAo();
+		for(QuanAo quanAo : list) {
+			Object [] data = {quanAo.getMaQuanAo(),quanAo.getTenQuanAo(),quanAo.getTenNCC().getTenNCC(),quanAo.getLoaiQuanAo().getTenLoai(),quanAo.getKinhThuoc(),quanAo.getSoLuongTon(),quanAo.getGia()};
+			modelThongTinQuanAo.addRow(data);
+		}
+		
+	}
+	public void xoaTrang() {
+		txtMaQuanAo.setText("");
+		txtTenquanao.setText("");
+		txtSoluong.setText("");
+		txtDongia.setText("");
+		cboKichco.setSelectedItem("S");
+		cboLoaiQuanAo.setSelectedItem("Áo");
+		
+	}
+	
+	public void xoaQuanAo() {
+		DAO_QuanAo dao = new DAO_QuanAo();
+		int row = tblQuanAo.getSelectedRow();
+		String maQuanAo = (String) tblQuanAo.getValueAt(row, 0);
+		if(dao.delete(maQuanAo)) {
+			modelThongTinQuanAo.removeRow(row);
+		}
 
+	}
+	public void suaQuanAo() {
+		DAO_QuanAo dao = new DAO_QuanAo();
+		String maQuanAo = txtMaQuanAo.getText().trim();
+		String tenQuanAo = txtTenquanao.getText().trim();
+		String tenNhaCC = cboNCC.getSelectedItem().toString();
+		String loaiQuanAo = cboLoaiQuanAo.getSelectedItem().toString();
+		String kichThuoc = cboKichco.getSelectedItem().toString();
+		String soLuongTon = txtSoluong.getText().trim();
+		String gia = txtDongia.getText().trim();
+		
+		QuanAo quanAo = new QuanAo(maQuanAo,tenQuanAo,new NhaCungCap(tenNhaCC),new LoaiQuanAo(loaiQuanAo) ,kichThuoc,Integer.parseInt(soLuongTon) ,Float.parseFloat(gia));
+		if(dao.update(quanAo)) {
+			JOptionPane.showMessageDialog(this, "Sửa thành công");
+			String [] data = {maQuanAo,tenQuanAo,tenNhaCC,loaiQuanAo,kichThuoc,soLuongTon,gia};
+			modelThongTinQuanAo.addRow(data);
+			int row = tblQuanAo.getSelectedRow();
+			modelThongTinQuanAo.removeRow(row);
+		}
+
+	}
+	public void timKiemQuanAo() {
+		DAO_QuanAo dao = new DAO_QuanAo();
+		List<QuanAo> list = dao.timTheoTen(txtTiemkiem.getText());
+		modelThongTinQuanAo.getDataVector().removeAllElements();
+		for (QuanAo quanAo : list) {
+			Object[] data = {quanAo.getMaQuanAo(),quanAo.getTenQuanAo(),quanAo.getTenNCC().getTenNCC(),quanAo.getLoaiQuanAo().getTenLoai(),quanAo.getKinhThuoc(),quanAo.getSoLuongTon(),quanAo.getGia()};
+			modelThongTinQuanAo.addRow(data);
+
+	}
+
+	}
+	public String taoMa() {
+
+		DAO_QuanAo dao = new DAO_QuanAo();
+		
+		int n = dao.getAllQuanAo().size();
+		if(n<9) {
+		do {
+			 n=n+1;
+			
+			ma = "QA00" + String.valueOf(n);
+			list = dao.getAllQuanAo();
+		} while (list.contains(ma));
+		
+	}else if(n<99) {
+		do {
+			 n=n+1;
+			
+			ma = "QA0" + String.valueOf(n);
+			list = dao.getAllQuanAo();
+		} while (list.contains(ma));
+	}
+	else if(n<999) {
+		do {
+			 n=n+1;
+			
+			ma = "QA" + String.valueOf(n);
+			list = dao.getAllQuanAo();
+		} while (list.contains(ma));
+	}
+		return ma;
 	}
 }
 

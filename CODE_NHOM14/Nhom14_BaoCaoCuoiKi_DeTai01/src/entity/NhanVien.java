@@ -11,8 +11,8 @@ public class NhanVien {
 	private String namSinh;
 	private String gioiTinh;
 	private Date ngayVaolam;
-	private String sDT;
-	public NhanVien(String maNV, String tenNV, String namSinh, String gioiTinh, Date ngayVaolam, String sDT) {
+	private int sDT;
+	public NhanVien(String maNV, String tenNV, String namSinh, String gioiTinh, Date ngayVaolam, int sDT) {
 		super();
 		this.maNV = maNV;
 		this.tenNV = tenNV;
@@ -51,10 +51,10 @@ public class NhanVien {
 	public void setNgayVaolam(Date ngayVaolam) {
 		this.ngayVaolam = ngayVaolam;
 	}
-	public String getsDT() {
+	public int getsDT() {
 		return sDT;
 	}
-	public void setsDT(String sDT) {
+	public void setsDT(int sDT) {
 		this.sDT = sDT;
 	}
 	@Override
